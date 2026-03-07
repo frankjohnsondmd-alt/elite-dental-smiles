@@ -68,6 +68,16 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 .hamburger{display:none;background:none;border:none;padding:6px;flex-direction:column;gap:5px}
 .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:transform .3s,opacity .3s}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-item-dd{position:relative}
+.nav-dd-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:none;font-family:var(--font-body);font-size:1.05rem;font-weight:700;color:var(--text);cursor:pointer;padding:0;position:relative;white-space:nowrap}
+.nav-dd-btn::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--blue-mid);border-radius:1px;transition:width .3s}
+.nav-dd-btn:hover,.nav-dd-btn.open{color:var(--blue-mid)}.nav-dd-btn:hover::after,.nav-dd-btn.open::after{width:100%}
+.nav-dd-btn .dd-chev{transition:transform .3s;width:14px;height:14px;flex-shrink:0}.nav-dd-btn.open .dd-chev{transform:rotate(180deg)}
+.nav-dd-panel{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);min-width:230px;padding:8px;z-index:500;display:none;white-space:nowrap}
+.nav-item-dd:hover .nav-dd-panel,.nav-dd-panel.open{display:block}
+.nav-dd-panel a{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;font-size:.92rem;font-weight:600;color:var(--text);transition:background .2s,color .2s}
+.nav-dd-panel a:hover{background:var(--bg-light);color:var(--blue-mid)}
+.nav-dd-panel a.active{color:var(--blue-mid)}
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(160deg,var(--white) 0%,var(--bg-light) 40%,var(--blue-pale) 100%);overflow:hidden;padding-top:64px}
 .hero-bg-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .hero-circle{position:absolute;border-radius:50%;background:var(--navy);opacity:.04}
@@ -271,10 +281,14 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
     <a href="#" class="logo"><img src="images/logo.png" alt="Elite Dental Smiles" class="nav-logo-img" width="270" height="58"/></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="sedation-dentistry.html" class="nav-link">Sedation</a></li>
-      <li><a href="#service-list" class="nav-link">Services</a></li>
-      <li><a href="dental-implants.html" class="nav-link">Implants</a></li>
-      <li><a href="#services" class="nav-link">Smile Gallery</a></li>
+      <li class="nav-item-dd">
+        <button class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-haspopup="true">Services <svg class="dd-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="nav-dd-panel" id="navDdPanel" role="menu">
+          <li><a href="sedation-dentistry.html" role="menuitem">😴 Sedation Dentistry</a></li>
+          <li><a href="dental-implants.html" role="menuitem">🦷 Dental Implants</a></li>
+        </ul>
+      </li>
+      <li><a href="#services" class="nav-link">Gallery</a></li>
       <li><a href="#doctors" class="nav-link">Doctors</a></li>
       <li><a href="#testimonials" class="nav-link">Reviews</a></li>
       <li><a href="#membership" class="nav-link">Membership</a></li>
@@ -556,6 +570,13 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 
   var animEls=document.querySelectorAll(".anim-up");
   if("IntersectionObserver"in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add("visible");obs.unobserve(entry.target)}})},{threshold:.1,rootMargin:"0px 0px -50px 0px"});animEls.forEach(function(el){obs.observe(el)})}else{animEls.forEach(function(el){el.classList.add("visible")})}
+
+  /* Services dropdown */
+  var ddBtn=document.getElementById("navDdBtn"),ddPanel=document.getElementById("navDdPanel");
+  if(ddBtn&&ddPanel){
+    ddBtn.addEventListener("click",function(e){e.stopPropagation();var open=ddBtn.classList.toggle("open");ddPanel.classList.toggle("open",open);ddBtn.setAttribute("aria-expanded",open)});
+    document.addEventListener("click",function(){ddBtn.classList.remove("open");ddPanel.classList.remove("open");ddBtn.setAttribute("aria-expanded","false")});
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor){anchor.addEventListener("click",function(e){var target=document.querySelector(this.getAttribute("href"));if(target){e.preventDefault();var offset=navbar.offsetHeight+12;var top=target.getBoundingClientRect().top+window.pageYOffset-offset;window.scrollTo({top:top,behavior:"smooth"})}})});
 
