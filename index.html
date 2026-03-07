@@ -100,12 +100,12 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 .ba-label{display:block;padding:14px 20px;font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--navy);border-bottom:1px solid var(--border)}
 .ba-slider{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;cursor:ew-resize;user-select:none;-webkit-user-select:none;touch-action:none}
 .ba-img{position:absolute;inset:0;overflow:hidden}.ba-img img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
-.ba-img--before{clip-path:inset(0 50% 0 0);z-index:2}.ba-img--after{z-index:1}
+.ba-img--before{clip-path:inset(0 0 0 50%);z-index:2}.ba-img--after{z-index:1}
 .ba-handle{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:4px;z-index:10;display:flex;flex-direction:column;align-items:center;pointer-events:none}
 .ba-handle-line{flex:1;width:2px;background:var(--white);box-shadow:0 0 6px rgba(0,0,0,.3);border-radius:1px}
 .ba-handle-knob{width:40px;height:40px;border-radius:50%;background:var(--blue);box-shadow:0 2px 12px rgba(0,51,102,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;pointer-events:auto;transition:transform .2s,box-shadow .2s}
 .ba-slider:active .ba-handle-knob,.ba-handle-knob:hover{transform:scale(1.12);box-shadow:0 4px 20px rgba(0,51,102,.5)}
-.ba-tag{position:absolute;bottom:10px;z-index:5;background:rgba(0,0,0,.6);color:var(--white);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:4px;pointer-events:none}.ba-tag--before{left:10px}.ba-tag--after{right:10px}
+.ba-tag{position:absolute;bottom:10px;z-index:5;background:rgba(0,0,0,.6);color:var(--white);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:4px;pointer-events:none}.ba-tag--before{right:10px}.ba-tag--after{left:10px}
 .process-list{max-width:720px;margin:0 auto}
 .process-step{display:flex;gap:24px;align-items:flex-start;padding:28px 0;border-bottom:1px solid var(--border)}.process-step:last-child{border-bottom:none}
 .step-num{min-width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-mid));display:flex;align-items:center;justify-content:center;color:var(--white);font-family:var(--font-display);font-weight:700;font-size:1rem;flex-shrink:0;box-shadow:0 4px 16px rgba(0,51,102,.25)}
@@ -561,14 +561,14 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
   /* Before/After sliders */
   document.querySelectorAll("[data-ba]").forEach(function(slider){
     var beforeLayer=slider.querySelector(".ba-img--before"),handle=slider.querySelector(".ba-handle"),dragging=false;
-    function setPos(x){var rect=slider.getBoundingClientRect();var pct=Math.max(.02,Math.min(.98,(x-rect.left)/rect.width))*100;beforeLayer.style.clipPath="inset(0 "+pct+"% 0 0)";handle.style.left=pct+"%"}
+    function setPos(x){var rect=slider.getBoundingClientRect();var pct=Math.max(.02,Math.min(.98,(x-rect.left)/rect.width))*100;beforeLayer.style.clipPath="inset(0 0 0 "+pct+"%)";handle.style.left=pct+"%"}
     function onDown(e){e.preventDefault();dragging=true;slider.setPointerCapture(e.pointerId);setPos(e.clientX)}
     function onMove(e){if(!dragging)return;e.preventDefault();setPos(e.clientX)}
     function onUp(){dragging=false}
     slider.addEventListener("pointerdown",onDown);slider.addEventListener("pointermove",onMove);slider.addEventListener("pointerup",onUp);slider.addEventListener("pointercancel",onUp);
     var knob=slider.querySelector(".ba-handle-knob");
     if(knob){knob.setAttribute("tabindex","0");knob.setAttribute("role","slider");knob.setAttribute("aria-valuenow","50");knob.setAttribute("aria-label","Drag to compare before and after");
-      knob.addEventListener("keydown",function(e){var cur=parseFloat(handle.style.left)||50;if(e.key==="ArrowLeft")cur=Math.max(2,cur-2);else if(e.key==="ArrowRight")cur=Math.min(98,cur+2);else return;e.preventDefault();beforeLayer.style.clipPath="inset(0 "+cur+"% 0 0)";handle.style.left=cur+"%";knob.setAttribute("aria-valuenow",Math.round(cur))})}
+      knob.addEventListener("keydown",function(e){var cur=parseFloat(handle.style.left)||50;if(e.key==="ArrowLeft")cur=Math.max(2,cur-2);else if(e.key==="ArrowRight")cur=Math.min(98,cur+2);else return;e.preventDefault();beforeLayer.style.clipPath="inset(0 0 0 "+cur+"%)";handle.style.left=cur+"%";knob.setAttribute("aria-valuenow",Math.round(cur))})}
   });
 
   /* Contact form: route to correct office email based on location */
