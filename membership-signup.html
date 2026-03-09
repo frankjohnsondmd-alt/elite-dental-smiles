@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Membership Club — Elite Dental Smiles</title>
+  <meta name="description" content="Join the Elite Dental Smiles in-house membership club. No insurance needed. Simple, affordable dental care in Dandridge & Jefferson City, TN."/>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a3d66;
+      --blue: #0d5c8f;
+      --blue-mid: #1a7bc4;
+      --blue-light: #4a90c4;
+      --blue-pale: #c8ddf0;
+      --bg-light: #f0f4f8;
+      --white: #fff;
+      --text: #0d1b2a;
+      --text-muted: #4a6d8c;
+      --border: #ccd8e4;
+      --gold: #d4a843;
+      --green: #1a9c5b;
+      --green-light: #e6f7ef;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 2px 8px rgba(0,34,68,.08);
+      --shadow-md: 0 8px 32px rgba(0,34,68,.12);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--bg-light); }
+
+    /* NAV */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    nav a { text-decoration: none; }
+    .nav-logo { height: 48px; width: auto; }
+    .nav-back {
+      font-size: .9rem;
+      color: var(--blue-mid);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-back:hover { color: var(--navy); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      color: var(--white);
+      padding: 60px 24px 80px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 50px;
+      padding: 5px 18px;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: .85;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .85rem;
+      font-weight: 600;
+      opacity: .9;
+    }
+    .hero-badge::before { content: '✓'; font-weight: 800; color: var(--gold); }
+
+    /* MAIN CONTENT */
+    .main { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+
+    /* STEP INDICATOR */
+    .steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 48px;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+    }
+    .step-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .9rem;
+      border: 2px solid var(--border);
+      background: var(--white);
+      color: var(--text-muted);
+      transition: all .3s;
+    }
+    .step.active .step-circle {
+      background: var(--blue-mid);
+      border-color: var(--blue-mid);
+      color: var(--white);
+    }
+    .step.done .step-circle {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--white);
+    }
+    .step.done .step-circle::before { content: '✓'; }
+    .step.done .step-circle span { display: none; }
+    .step-label {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .step.active .step-label { color: var(--blue-mid); }
+    .step.done .step-label { color: var(--green); }
+    .step-line {
+      width: 60px;
+      height: 2px;
+      background: var(--border);
+      margin-bottom: 22px;
+      transition: background .3s;
+    }
+    .step-line.done { background: var(--green); }
+
+    /* PLAN CARDS */
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      font-size: .95rem;
+    }
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .plan-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all .25s;
+      position: relative;
+    }
+    .plan-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .plan-card.selected {
+      border-color: var(--blue-mid);
+      box-shadow: 0 0 0 4px rgba(26,123,196,.15), var(--shadow-md);
+    }
+    .plan-card.featured { border-color: var(--blue-mid); }
+    .plan-badge {
+      background: var(--blue-mid);
+      color: var(--white);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-align: center;
+      padding: 6px;
+      text-transform: uppercase;
+    }
+    .plan-selected-badge {
+      display: none;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--blue-mid);
+      color: var(--white);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+    .plan-card.selected .plan-selected-badge { display: flex; }
+    .plan-body { padding: 20px 20px 0; text-align: center; }
+    .plan-type { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+    .plan-age { font-size: .8rem; color: var(--text-muted); margin-top: 2px; }
+    .plan-price {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2px;
+      margin: 14px 0 4px;
+    }
+    .plan-dollar { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-top: 6px; }
+    .plan-amount { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; font-family: var(--font-display); }
+    .plan-period { font-size: .85rem; color: var(--text-muted); align-self: flex-end; margin-bottom: 4px; }
+    .plan-activation { font-size: .78rem; color: var(--text-muted); }
+    .plan-savings { font-size: .85rem; font-weight: 700; color: var(--blue-mid); margin: 6px 0 14px; }
+    .plan-features { list-style: none; padding: 0 20px 20px; text-align: left; }
+    .plan-features li {
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .84rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-features li::before { content: '✓'; color: var(--blue-mid); font-weight: 700; flex-shrink: 0; }
+
+    /* LOCATION PICKER */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .location-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      cursor: pointer;
+      transition: all .25s;
+      text-align: center;
+    }
+    .location-card:hover { border-color: var(--blue-light); transform: translateY(-2px); }
+    .location-card.selected {
+      border-color: var(--blue-mid);
+      background: #f0f7ff;
+      box-shadow: 0 0 0 3px rgba(26,123,196,.12);
+    }
+    .location-icon { font-size: 2rem; margin-bottom: 10px; }
+    .location-name { font-weight: 700; color: var(--navy); font-size: 1rem; margin-bottom: 4px; }
+    .location-address { font-size: .8rem; color: var(--text-muted); }
+    .location-phone { font-size: .82rem; color: var(--blue-mid); font-weight: 600; margin-top: 6px; }
+
+    /* FORM */
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      max-width: 680px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-sm);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .form-group label { font-size: .85rem; font-weight: 600; color: var(--text); }
+    .form-group input, .form-group select {
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: .95rem;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--white);
+      transition: border-color .2s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(26,123,196,.1); }
+    .form-group .hint { font-size: .78rem; color: var(--text-muted); }
+
+    /* PAYMENT PLACEHOLDER */
+    .payment-placeholder {
+      background: var(--bg-light);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .payment-placeholder-icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .payment-placeholder h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .payment-placeholder p { font-size: .85rem; color: var(--text-muted); }
+    .stripe-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #635bff15;
+      border: 1px solid #635bff30;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: .78rem;
+      color: #635bff;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    /* ORDER SUMMARY */
+    .order-summary {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+    .order-summary h3 { font-size: .9rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 16px; }
+    .order-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: .9rem; }
+    .order-row:last-child { border-bottom: none; }
+    .order-row.total { font-weight: 800; font-size: 1rem; color: var(--navy); padding-top: 12px; }
+    .order-label { color: var(--text-muted); }
+    .order-value { color: var(--text); font-weight: 600; }
+
+    /* CONFIRMATION */
+    .confirm-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      max-width: 580px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .confirm-icon { font-size: 3.5rem; margin-bottom: 16px; }
+    .confirm-card h2 { font-family: var(--font-display); font-size: 1.8rem; color: var(--navy); margin-bottom: 12px; }
+    .confirm-card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
+    .confirm-details {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+    .confirm-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: .9rem; }
+    .confirm-row span:first-child { color: var(--text-muted); }
+    .confirm-row span:last-child { font-weight: 600; color: var(--text); }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      font-size: .95rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all .25s;
+    }
+    .btn-primary { background: var(--blue-mid); color: var(--white); }
+    .btn-primary:hover { background: var(--navy); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(10,61,102,.3); }
+    .btn-primary:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; transform: none; box-shadow: none; }
+    .btn-ghost { background: transparent; color: var(--text-muted); border: 1.5px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--blue-mid); color: var(--blue-mid); }
+    .btn-full { width: 100%; }
+    .btn-lg { padding: 16px 32px; font-size: 1rem; }
+
+    .nav-btns {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      gap: 16px;
+    }
+
+    /* STEP PANELS */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    /* SUMMARY BAR */
+    .summary-bar {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .summary-bar-item { font-size: .85rem; }
+    .summary-bar-item .label { color: var(--text-muted); font-size: .75rem; display: block; margin-bottom: 2px; }
+    .summary-bar-item .value { font-weight: 700; color: var(--navy); }
+    .summary-bar .change-link { font-size: .78rem; color: var(--blue-mid); cursor: pointer; text-decoration: underline; }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+      .plan-grid { grid-template-columns: 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-card { padding: 24px 20px; }
+      .confirm-card { padding: 32px 20px; }
+      .step-line { width: 32px; }
+      .steps { gap: 0; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-muted);
+      font-size: .82rem;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+      background: var(--white);
+    }
+    footer a { color: var(--blue-mid); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html">
+      <img src="images/wordmark.svg" alt="Elite Dental Smiles" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+      <span style="display:none; font-family: var(--font-display); font-weight:700; color:var(--navy); font-size:1.1rem;">Elite Dental Smiles</span>
+    </a>
+    <a href="index.html" class="nav-back">← Back to main site</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Membership Club</div>
+    <h1>Affordable Dental Care,<br/><em>No Insurance Required</em></h1>
+    <p>Join our in-house membership club and get the care you need at a price you can afford. Active the same day you sign up.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">No waiting periods</span>
+      <span class="hero-badge">No claim denials</span>
+      <span class="hero-badge">No annual maximums</span>
+      <span class="hero-badge">Cancel anytime</span>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- STEP INDICATOR -->
+    <div class="steps" id="stepIndicator">
+      <div class="step active" id="stepDot1">
+        <div class="step-circle"><span>1</span></div>
+        <div class="step-label">Choose Plan</div>
+      </div>
+      <div class="step-line" id="stepLine1"></div>
+      <div class="step" id="stepDot2">
+        <div class="step-circle"><span>2</span></div>
+        <div class="step-label">Your Info</div>
+      </div>
+      <div class="step-line" id="stepLine2"></div>
+      <div class="step" id="stepDot3">
+        <div class="step-circle"><span>3</span></div>
+        <div class="step-label">Payment</div>
+      </div>
+      <div class="step-line" id="stepLine3"></div>
+      <div class="step" id="stepDot4">
+        <div class="step-circle"><span>4</span></div>
+        <div class="step-label">Confirmed</div>
+      </div>
+    </div>
+
+    <!-- STEP 1: CHOOSE PLAN + LOCATION -->
+    <div class="step-panel active" id="panel1">
+      <h2 class="section-title">Choose Your Location</h2>
+      <p class="section-sub">Select the office where you'll receive care</p>
+      <div class="location-grid">
+        <div class="location-card" onclick="selectLocation(this, 'Dandridge')">
+          <div class="location-icon">🏥</div>
+          <div class="location-name">Dandridge</div>
+          <div class="location-address">395 Stanley St, Dandridge, TN 37725</div>
+          <div class="location-phone">(865) 397-5422</div>
+        </div>
+        <div class="location-card" onclick="selectLocation(this, 'Jefferson City')">
+          <div class="location-icon">🏥</div>
+          <div class="location-name">Jefferson City</div>
+          <div class="location-address">Jefferson City, TN</div>
+          <div class="location-phone">(865) 475-8331</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Choose Your Plan</h2>
+      <p class="section-sub">All plans include a $99 one-time lifetime activation fee</p>
+      <div class="plan-grid">
+        <div class="plan-card" onclick="selectPlan(this, 'Adult Membership', 37, '13 and Older')">
+          <div class="plan-selected-badge">✓</div>
+          <div class="plan-body">
+            <div class="plan-type">Adult Membership</div>
+            <div class="plan-age">13 and Older</div>
+            <div class="plan-price">
+              <span class="plan-dollar">$</span>
+              <span class="plan-amount">37</span>
+              <span class="plan-period">/mo</span>
+            </div>
+            <div class="plan-activation">+ $99 one-time activation</div>
+            <div class="plan-savings">🎉 Save at least $242/year!</div>
+          </div>
+          <ul class="plan-features">
+            <li>2 Professional Cleanings/year</li>
+            <li>1–2 Doctor Exams/year</li>
+            <li>Needed X-rays</li>
+            <li>1 Emergency Exam/year</li>
+            <li>15% off all other treatments</li>
+          </ul>
+        </div>
+
+        <div class="plan-card featured" onclick="selectPlan(this, 'Perio Membership', 60, 'Periodontal Disease')">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-selected-badge">✓</div>
+          <div class="plan-body">
+            <div class="plan-type">Perio Membership</div>
+            <div class="plan-age">Periodontal Disease</div>
+            <div class="plan-price">
+              <span class="plan-dollar">$</span>
+              <span class="plan-amount">60</span>
+              <span class="plan-period">/mo</span>
+            </div>
+            <div class="plan-activation">+ $99 one-time activation</div>
+            <div class="plan-savings">🎉 Save at least $275/year!</div>
+          </div>
+          <ul class="plan-features">
+            <li>3–4 Perio Maintenance Cleanings/year</li>
+            <li>1–2 Doctor Exams/year</li>
+            <li>Needed X-rays</li>
+            <li>1 Emergency Exam/year</li>
+            <li>15% off all other treatments</li>
+          </ul>
+        </div>
+
+        <div class="plan-card" onclick="selectPlan(this, 'Child Membership', 33, '12 and Younger')">
+          <div class="plan-selected-badge">✓</div>
+          <div class="plan-body">
+            <div class="plan-type">Child Membership</div>
+            <div class="plan-age">12 and Younger</div>
+            <div class="plan-price">
+              <span class="plan-dollar">$</span>
+              <span class="plan-amount">33</span>
+              <span class="plan-period">/mo</span>
+            </div>
+            <div class="plan-activation">+ $99 one-time activation</div>
+            <div class="plan-savings">🎉 Save at least $171/year!</div>
+          </div>
+          <ul class="plan-features">
+            <li>2 Professional Cleanings/year</li>
+            <li>1–2 Doctor Exams/year</li>
+            <li>Needed X-rays & Fluoride</li>
+            <li>1 Emergency Exam/year</li>
+            <li>15% off all other treatments</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <button class="btn btn-primary btn-lg" id="step1Next" onclick="goToStep(2)" disabled>
+          Continue → Patient Info
+        </button>
+        <p style="margin-top:12px; font-size:.82rem; color:var(--text-muted);">Select a location and plan to continue</p>
+      </div>
+    </div>
+
+    <!-- STEP 2: PATIENT INFO -->
+    <div class="step-panel" id="panel2">
+      <div class="summary-bar" id="summaryBar">
+        <div class="summary-bar-item">
+          <span class="label">Location</span>
+          <span class="value" id="summaryLocation">—</span>
+        </div>
+        <div class="summary-bar-item">
+          <span class="label">Plan</span>
+          <span class="value" id="summaryPlan">—</span>
+        </div>
+        <div class="summary-bar-item">
+          <span class="label">Monthly</span>
+          <span class="value" id="summaryPrice">—</span>
+        </div>
+        <span class="change-link" onclick="goToStep(1)">Change plan</span>
+      </div>
+
+      <div class="form-card">
+        <h2 style="font-family:var(--font-display); font-size:1.4rem; color:var(--navy); margin-bottom:24px;">Patient Information</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="Jane" autocomplete="given-name"/>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Smith" autocomplete="family-name"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="jane@example.com" autocomplete="email"/>
+            <span class="hint">Confirmation & receipts will be sent here</span>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(865) 555-1234" autocomplete="tel"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob"/>
+          </div>
+          <div class="form-group">
+            <label for="newPatient">Are you a current patient?</label>
+            <select id="newPatient">
+              <option value="">Select...</option>
+              <option value="yes">Yes, I'm an existing patient</option>
+              <option value="no">No, I'm a new patient</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-ghost" onclick="goToStep(1)">← Back</button>
+          <button class="btn btn-primary btn-lg" onclick="goToStep(3)">Continue → Payment</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: PAYMENT -->
+    <div class="step-panel" id="panel3">
+      <div class="summary-bar">
+        <div class="summary-bar-item">
+          <span class="label">Location</span>
+          <span class="value" id="summaryLocation2">—</span>
+        </div>
+        <div class="summary-bar-item">
+          <span class="label">Plan</span>
+          <span class="value" id="summaryPlan2">—</span>
+        </div>
+        <div class="summary-bar-item">
+          <span class="label">Patient</span>
+          <span class="value" id="summaryPatient">—</span>
+        </div>
+        <span class="change-link" onclick="goToStep(2)">Edit info</span>
+      </div>
+
+      <div class="form-card">
+        <h2 style="font-family:var(--font-display); font-size:1.4rem; color:var(--navy); margin-bottom:24px;">Payment Details</h2>
+
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="order-row">
+            <span class="order-label" id="orderPlan">Adult Membership</span>
+            <span class="order-value" id="orderMonthly">$37/mo</span>
+          </div>
+          <div class="order-row">
+            <span class="order-label">One-time activation fee</span>
+            <span class="order-value">$99.00</span>
+          </div>
+          <div class="order-row total">
+            <span>Due today</span>
+            <span id="orderTotal">$136.00</span>
+          </div>
+          <div class="order-row" style="font-size:.8rem; color:var(--text-muted); border:none; padding-top:4px;">
+            <span>Then <span id="orderRecurring">$37</span>/month recurring</span>
+            <span>Cancel anytime</span>
+          </div>
+        </div>
+
+        <div class="payment-placeholder">
+          <div class="payment-placeholder-icon">💳</div>
+          <h3>Secure Card Payment</h3>
+          <p>Stripe payment form will appear here once connected.<br/>All major credit & debit cards accepted.</p>
+          <div class="stripe-badge">⚡ Powered by Stripe</div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:8px; font-size:.8rem; color:var(--text-muted); margin-bottom:20px; justify-content:center;">
+          <span>🔒</span>
+          <span>256-bit SSL encryption · Your card info is never stored on our servers</span>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-ghost" onclick="goToStep(2)">← Back</button>
+          <button class="btn btn-primary btn-lg" onclick="goToStep(4)">Complete Enrollment →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: CONFIRMATION -->
+    <div class="step-panel" id="panel4">
+      <div class="confirm-card">
+        <div class="confirm-icon">🎉</div>
+        <h2>You're a Member!</h2>
+        <p>Welcome to the Elite Dental Smiles Membership Club. Your membership is active starting today. A confirmation email is on its way to you.</p>
+
+        <div class="confirm-details">
+          <div class="confirm-row">
+            <span>Member</span>
+            <span id="confirmName">—</span>
+          </div>
+          <div class="confirm-row">
+            <span>Plan</span>
+            <span id="confirmPlan">—</span>
+          </div>
+          <div class="confirm-row">
+            <span>Location</span>
+            <span id="confirmLocation">—</span>
+          </div>
+          <div class="confirm-row">
+            <span>Monthly charge</span>
+            <span id="confirmMonthly">—</span>
+          </div>
+          <div class="confirm-row">
+            <span>Status</span>
+            <span style="color:var(--green); font-weight:700;">✓ Active</span>
+          </div>
+        </div>
+
+        <a href="tel:+18653975422" class="btn btn-primary btn-full btn-lg" style="margin-bottom:12px;">
+          📞 Call to Schedule Your First Appointment
+        </a>
+        <a href="index.html" class="btn btn-ghost btn-full">Back to Main Site</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Elite Dental Smiles · <a href="privacy.html">Privacy Policy</a> · Questions? Call <a href="tel:+18653975422">(865) 397-5422</a></p>
+  </footer>
+
+  <script>
+    var selectedPlan = null;
+    var selectedLocation = null;
+
+    function selectLocation(el, name) {
+      document.querySelectorAll('.location-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedLocation = name;
+      checkStep1();
+    }
+
+    function selectPlan(el, name, price, age) {
+      document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedPlan = { name, price, age };
+      checkStep1();
+    }
+
+    function checkStep1() {
+      var btn = document.getElementById('step1Next');
+      if (selectedPlan && selectedLocation) {
+        btn.disabled = false;
+        btn.textContent = 'Continue → Patient Info';
+      }
+    }
+
+    function updateSummaryBars() {
+      var planText = selectedPlan ? selectedPlan.name : '—';
+      var priceText = selectedPlan ? '$' + selectedPlan.price + '/mo' : '—';
+      var locText = selectedLocation || '—';
+
+      document.getElementById('summaryLocation').textContent = locText;
+      document.getElementById('summaryPlan').textContent = planText;
+      document.getElementById('summaryPrice').textContent = priceText;
+
+      document.getElementById('summaryLocation2').textContent = locText;
+      document.getElementById('summaryPlan2').textContent = planText;
+
+      var first = (document.getElementById('firstName').value || '') + ' ' + (document.getElementById('lastName').value || '');
+      document.getElementById('summaryPatient').textContent = first.trim() || '—';
+
+      document.getElementById('orderPlan').textContent = planText;
+      document.getElementById('orderMonthly').textContent = priceText;
+      document.getElementById('orderRecurring').textContent = selectedPlan ? '$' + selectedPlan.price : '—';
+      var total = selectedPlan ? (selectedPlan.price + 99) : 99;
+      document.getElementById('orderTotal').textContent = '$' + total + '.00';
+
+      document.getElementById('confirmName').textContent = first.trim() || '—';
+      document.getElementById('confirmPlan').textContent = planText;
+      document.getElementById('confirmLocation').textContent = locText;
+      document.getElementById('confirmMonthly').textContent = priceText;
+    }
+
+    function goToStep(n) {
+      updateSummaryBars();
+
+      document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel' + n).classList.add('active');
+
+      for (var i = 1; i <= 4; i++) {
+        var dot = document.getElementById('stepDot' + i);
+        dot.classList.remove('active', 'done');
+        if (i < n) dot.classList.add('done');
+        else if (i === n) dot.classList.add('active');
+        if (i < 4) {
+          var line = document.getElementById('stepLine' + i);
+          line.classList.toggle('done', i < n);
+        }
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
