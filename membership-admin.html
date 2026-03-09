@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Membership Admin — Elite Dental Smiles</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a3d66;
+      --blue: #0d5c8f;
+      --blue-mid: #1a7bc4;
+      --blue-light: #4a90c4;
+      --blue-pale: #c8ddf0;
+      --bg-light: #f0f4f8;
+      --white: #fff;
+      --text: #0d1b2a;
+      --text-muted: #4a6d8c;
+      --border: #ccd8e4;
+      --gold: #d4a843;
+      --green: #1a9c5b;
+      --green-light: #e6f7ef;
+      --red: #d94f4f;
+      --red-light: #fdf0f0;
+      --purple: #7c3aed;
+      --purple-light: #ede9fe;
+      --radius: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 2px 8px rgba(0,34,68,.08);
+      --shadow-md: 0 8px 32px rgba(0,34,68,.12);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--bg-light); min-height: 100vh; }
+
+    /* VIEWS */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* LOGIN */
+    .login-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    }
+    .login-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 44px 40px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 24px 64px rgba(0,0,0,.2);
+    }
+    .login-logo { text-align: center; margin-bottom: 8px; }
+    .login-logo img { height: 44px; }
+    .login-card h2 { font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); text-align: center; margin-bottom: 6px; }
+    .login-card p { text-align: center; color: var(--text-muted); font-size: .88rem; margin-bottom: 28px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: .84rem; font-weight: 700; color: var(--text); }
+    .form-group input {
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: .95rem;
+      font-family: var(--font-body);
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus { border-color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(26,123,196,.1); }
+    .error-msg {
+      background: var(--red-light);
+      border: 1px solid #f4c4c4;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: .84rem;
+      color: var(--red);
+      margin-bottom: 14px;
+      display: none;
+    }
+    .btn-login {
+      width: 100%;
+      padding: 13px;
+      background: var(--blue-mid);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: .95rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-login:hover { background: var(--navy); }
+
+    /* ADMIN SHELL */
+    .admin-shell { display: flex; min-height: 100vh; }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 220px;
+      background: var(--navy);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+    }
+    .sidebar-logo {
+      padding: 8px 20px 24px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 16px;
+    }
+    .sidebar-logo img { height: 36px; filter: brightness(0) invert(1); }
+    .sidebar-logo-text {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: .95rem;
+      font-weight: 700;
+    }
+    .sidebar-label {
+      padding: 6px 20px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-top: 8px;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      border-radius: 0;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      transition: all .2s;
+      font-family: var(--font-body);
+    }
+    .sidebar-link:hover { background: rgba(255,255,255,.08); color: var(--white); }
+    .sidebar-link.active { background: rgba(255,255,255,.14); color: var(--white); border-left: 3px solid var(--gold); }
+    .sidebar-link .icon { font-size: 1rem; width: 18px; text-align: center; flex-shrink: 0; }
+    .sidebar-spacer { flex: 1; }
+    .sidebar-footer { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,.1); }
+    .sidebar-footer p { font-size: .75rem; color: rgba(255,255,255,.45); line-height: 1.5; }
+
+    /* MAIN CONTENT */
+    .admin-main { flex: 1; overflow-x: hidden; }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+    .topbar h1 { font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+    .topbar-right { display: flex; align-items: center; gap: 14px; }
+    .topbar-loc {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .loc-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+    .btn-sm {
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-body);
+      transition: all .2s;
+    }
+    .btn-sm-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+    }
+    .btn-sm-outline:hover { border-color: var(--blue-mid); color: var(--blue-mid); }
+    .btn-sm-primary { background: var(--blue-mid); color: var(--white); }
+    .btn-sm-primary:hover { background: var(--navy); }
+
+    /* PAGE CONTENT */
+    .page { display: none; padding: 28px; }
+    .page.active { display: block; }
+
+    /* STATS GRID */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-label { font-size: .76rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+    .stat-value { font-size: 2rem; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 4px; font-family: var(--font-display); }
+    .stat-sub { font-size: .78rem; color: var(--text-muted); }
+    .stat-up { color: var(--green); font-weight: 700; }
+    .stat-down { color: var(--red); font-weight: 700; }
+
+    /* TABLE CARD */
+    .table-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .table-header {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+    }
+    .table-header h3 { font-size: .95rem; font-weight: 800; color: var(--navy); }
+    .table-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .search-input {
+      padding: 8px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: .85rem;
+      font-family: var(--font-body);
+      color: var(--text);
+      outline: none;
+      width: 220px;
+      transition: border-color .2s;
+    }
+    .search-input:focus { border-color: var(--blue-mid); }
+    .filter-select {
+      padding: 8px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: .85rem;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      cursor: pointer;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      background: var(--bg-light);
+      padding: 10px 16px;
+      text-align: left;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: .88rem;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f8fafc; }
+    .td-name { font-weight: 700; color: var(--navy); }
+    .td-sub { font-size: .78rem; color: var(--text-muted); font-weight: 400; }
+
+    /* BADGES */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: .73rem;
+      font-weight: 700;
+    }
+    .badge-active { background: var(--green-light); color: var(--green); }
+    .badge-cancelled { background: var(--red-light); color: var(--red); }
+    .badge-paused { background: #fff8e0; color: #b8860b; }
+    .badge-adult { background: rgba(26,123,196,.1); color: var(--blue-mid); }
+    .badge-perio { background: var(--purple-light); color: var(--purple); }
+    .badge-child { background: rgba(212,168,67,.1); color: #8b6100; }
+
+    .table-footer {
+      padding: 12px 20px;
+      background: var(--bg-light);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .table-footer p { font-size: .8rem; color: var(--text-muted); }
+
+    /* EMPTY STATE */
+    .no-results {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-muted);
+      font-size: .9rem;
+      display: none;
+    }
+
+    /* PLAN BREAKDOWN */
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .breakdown-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .breakdown-card h4 { font-size: .82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; }
+    .breakdown-bar-wrap { background: var(--bg-light); border-radius: 50px; height: 8px; overflow: hidden; margin-bottom: 8px; }
+    .breakdown-bar { height: 100%; border-radius: 50px; transition: width .8s ease; }
+    .breakdown-bar-adult { background: var(--blue-mid); }
+    .breakdown-bar-perio { background: var(--purple); }
+    .breakdown-bar-child { background: var(--gold); }
+    .breakdown-stat { display: flex; justify-content: space-between; font-size: .85rem; }
+    .breakdown-count { font-weight: 800; color: var(--navy); }
+    .breakdown-pct { color: var(--text-muted); }
+
+    /* REVENUE CHART PLACEHOLDER */
+    .chart-placeholder {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .chart-placeholder h3 { font-size: .95rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .chart-placeholder p { font-size: .85rem; }
+    .chart-bar-demo {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      justify-content: center;
+      height: 100px;
+      margin: 20px 0 8px;
+    }
+    .cbar {
+      background: var(--blue-pale);
+      border-radius: 4px 4px 0 0;
+      width: 28px;
+      transition: background .2s;
+      position: relative;
+    }
+    .cbar.current { background: var(--blue-mid); }
+    .cbar-label { text-align: center; font-size: .68rem; color: var(--text-muted); margin-top: 6px; }
+    .chart-bar-labels { display: flex; gap: 8px; justify-content: center; }
+
+    /* MEMBER DETAIL MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 24px 64px rgba(0,0,0,.2);
+      transform: scale(.95);
+      transition: transform .3s;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-overlay.open .modal { transform: scale(1); }
+    .modal-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--navy); margin-bottom: 4px; }
+    .modal-sub { font-size: .82rem; color: var(--text-muted); margin-bottom: 22px; }
+    .modal-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: .88rem; }
+    .modal-row:last-child { border-bottom: none; }
+    .modal-row-label { color: var(--text-muted); }
+    .modal-row-value { font-weight: 700; color: var(--text); }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .breakdown-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .page { padding: 16px; }
+      .table-header { flex-direction: column; align-items: flex-start; }
+      .search-input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN VIEW -->
+  <div class="view active" id="view-login">
+    <div class="login-wrap">
+      <div class="login-card">
+        <div class="login-logo">
+          <img src="images/wordmark.svg" alt="Elite Dental Smiles"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+          <span style="display:none; font-family:var(--font-display); font-weight:700; color:var(--navy); font-size:1.1rem;">Elite Dental Smiles</span>
+        </div>
+        <h2>Admin Access</h2>
+        <p>Membership dashboard — authorized staff only</p>
+        <div class="error-msg" id="loginError">Incorrect password. Please try again.</div>
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" placeholder="Enter admin password"
+                 onkeydown="if(event.key==='Enter') handleLogin()"/>
+        </div>
+        <button class="btn-login" onclick="handleLogin()">Sign In →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN VIEW -->
+  <div class="view" id="view-admin">
+    <div class="admin-shell">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <img src="images/wordmark.svg" alt="EDS" class="sidebar-logo-text"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+          <span class="sidebar-logo-text" style="display:none;">Elite Dental</span>
+        </div>
+        <div class="sidebar-label">Membership</div>
+        <button class="sidebar-link active" id="nav-overview" onclick="showPage('page-overview', this)">
+          <span class="icon">📊</span> Overview
+        </button>
+        <button class="sidebar-link" id="nav-members" onclick="showPage('page-members', this)">
+          <span class="icon">👥</span> Members
+        </button>
+        <div class="sidebar-label">Settings</div>
+        <button class="sidebar-link" id="nav-plans" onclick="showPage('page-plans', this)">
+          <span class="icon">📋</span> Plan Config
+        </button>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-footer">
+          <p>Elite Dental Smiles<br/>Admin Portal</p>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <div class="admin-main">
+        <div class="topbar">
+          <h1 id="pageTitle">Overview</h1>
+          <div class="topbar-right">
+            <div class="topbar-loc">
+              <div class="loc-dot"></div>
+              All Locations
+            </div>
+            <button class="btn-sm btn-sm-outline" onclick="handleLogout()">Sign Out</button>
+          </div>
+        </div>
+
+        <!-- OVERVIEW PAGE -->
+        <div class="page active" id="page-overview">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Active Members</div>
+              <div class="stat-value" id="statActive">—</div>
+              <div class="stat-sub"><span class="stat-up" id="statNewThisMonth">—</span> new this month</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Monthly Recurring</div>
+              <div class="stat-value" id="statMRR">—</div>
+              <div class="stat-sub">Gross before processing fees</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Annual Run Rate</div>
+              <div class="stat-value" id="statARR">—</div>
+              <div class="stat-sub">At current MRR</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Cancellations (MTD)</div>
+              <div class="stat-value" id="statCancelled">—</div>
+              <div class="stat-sub"><span class="stat-down" id="statChurn">—</span> churn rate</div>
+            </div>
+          </div>
+
+          <!-- Revenue chart placeholder -->
+          <div class="chart-placeholder">
+            <h3>Monthly Revenue (Last 6 Months)</h3>
+            <p>Chart will render from Stripe data once connected</p>
+            <div style="display:flex; align-items:flex-end; gap:8px; justify-content:center; height:100px; margin:20px 0 0;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                <div style="background:var(--blue-pale);border-radius:4px 4px 0 0;width:32px;height:55px;"></div>
+                <span style="font-size:.68rem;color:var(--text-muted);">Oct</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                <div style="background:var(--blue-pale);border-radius:4px 4px 0 0;width:32px;height:62px;"></div>
+                <span style="font-size:.68rem;color:var(--text-muted);">Nov</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                <div style="background:var(--blue-pale);border-radius:4px 4px 0 0;width:32px;height:70px;"></div>
+                <span style="font-size:.68rem;color:var(--text-muted);">Dec</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                <div style="background:var(--blue-pale);border-radius:4px 4px 0 0;width:32px;height:75px;"></div>
+                <span style="font-size:.68rem;color:var(--text-muted);">Jan</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                <div style="background:var(--blue-pale);border-radius:4px 4px 0 0;width:32px;height:82px;"></div>
+                <span style="font-size:.68rem;color:var(--text-muted);">Feb</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                <div style="background:var(--blue-mid);border-radius:4px 4px 0 0;width:32px;height:92px;"></div>
+                <span style="font-size:.68rem;color:var(--blue-mid);font-weight:700;">Mar</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plan breakdown -->
+          <div class="breakdown-grid">
+            <div class="breakdown-card">
+              <h4>Adult Memberships</h4>
+              <div class="breakdown-bar-wrap">
+                <div class="breakdown-bar breakdown-bar-adult" id="barAdult" style="width:0%"></div>
+              </div>
+              <div class="breakdown-stat">
+                <span class="breakdown-count" id="countAdult">—</span>
+                <span class="breakdown-pct" id="pctAdult">—</span>
+              </div>
+            </div>
+            <div class="breakdown-card">
+              <h4>Perio Memberships</h4>
+              <div class="breakdown-bar-wrap">
+                <div class="breakdown-bar breakdown-bar-perio" id="barPerio" style="width:0%"></div>
+              </div>
+              <div class="breakdown-stat">
+                <span class="breakdown-count" id="countPerio">—</span>
+                <span class="breakdown-pct" id="pctPerio">—</span>
+              </div>
+            </div>
+            <div class="breakdown-card">
+              <h4>Child Memberships</h4>
+              <div class="breakdown-bar-wrap">
+                <div class="breakdown-bar breakdown-bar-child" id="barChild" style="width:0%"></div>
+              </div>
+              <div class="breakdown-stat">
+                <span class="breakdown-count" id="countChild">—</span>
+                <span class="breakdown-pct" id="pctChild">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent signups -->
+          <div class="table-card">
+            <div class="table-header">
+              <h3>Recent Signups</h3>
+              <button class="btn-sm btn-sm-outline" onclick="showPage('page-members', document.getElementById('nav-members'))">View All →</button>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Plan</th>
+                  <th>Location</th>
+                  <th>Joined</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentTable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- MEMBERS PAGE -->
+        <div class="page" id="page-members">
+          <div class="table-card">
+            <div class="table-header">
+              <h3>All Members</h3>
+              <div class="table-actions">
+                <input type="text" class="search-input" id="memberSearch" placeholder="Search by name or email…" oninput="filterMembers()"/>
+                <select class="filter-select" id="planFilter" onchange="filterMembers()">
+                  <option value="">All Plans</option>
+                  <option value="adult">Adult</option>
+                  <option value="perio">Perio</option>
+                  <option value="child">Child</option>
+                </select>
+                <select class="filter-select" id="statusFilter" onchange="filterMembers()">
+                  <option value="">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+                <select class="filter-select" id="locationFilter" onchange="filterMembers()">
+                  <option value="">All Locations</option>
+                  <option value="dandridge">Dandridge</option>
+                  <option value="jefferson">Jefferson City</option>
+                </select>
+                <button class="btn-sm btn-sm-primary" onclick="exportCSV()">⬇ Export CSV</button>
+              </div>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Plan</th>
+                  <th>Location</th>
+                  <th>Monthly</th>
+                  <th>Joined</th>
+                  <th>Next Billing</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="membersTable"></tbody>
+            </table>
+            <div class="no-results" id="noResults">No members match your filters.</div>
+            <div class="table-footer">
+              <p id="membersCount">—</p>
+              <button class="btn-sm btn-sm-outline" onclick="exportCSV()">Export CSV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLAN CONFIG PAGE -->
+        <div class="page" id="page-plans">
+          <div class="table-card" style="max-width:700px;">
+            <div class="table-header">
+              <h3>Plan Configuration</h3>
+              <span style="font-size:.8rem; color:var(--text-muted);">Connect Stripe to enable editing</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Age Range</th>
+                  <th>Monthly Price</th>
+                  <th>Activation Fee</th>
+                  <th>Discount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Adult Membership</strong></td>
+                  <td>13+</td>
+                  <td>$37.00</td>
+                  <td>$99.00 (lifetime)</td>
+                  <td>15%</td>
+                  <td><span class="badge badge-active">● Active</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Perio Membership</strong></td>
+                  <td>Any</td>
+                  <td>$60.00</td>
+                  <td>$99.00 (lifetime)</td>
+                  <td>15%</td>
+                  <td><span class="badge badge-active">● Active</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Child Membership</strong></td>
+                  <td>12 &amp; under</td>
+                  <td>$33.00</td>
+                  <td>$99.00 (lifetime)</td>
+                  <td>15%</td>
+                  <td><span class="badge badge-active">● Active</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="padding:16px 20px; background:var(--bg-light); border-top:1px solid var(--border); font-size:.82rem; color:var(--text-muted);">
+              ℹ️ Plan prices and Stripe product IDs are configured in <code>.env</code>. Changes require a deployment.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMBER DETAIL MODAL -->
+  <div class="modal-overlay" id="memberModal">
+    <div class="modal" style="position:relative;">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-title" id="modalName">—</div>
+      <div class="modal-sub" id="modalEmail">—</div>
+      <div class="modal-row"><span class="modal-row-label">Plan</span><span class="modal-row-value" id="modalPlan">—</span></div>
+      <div class="modal-row"><span class="modal-row-label">Location</span><span class="modal-row-value" id="modalLocation">—</span></div>
+      <div class="modal-row"><span class="modal-row-label">Monthly</span><span class="modal-row-value" id="modalMonthly">—</span></div>
+      <div class="modal-row"><span class="modal-row-label">Joined</span><span class="modal-row-value" id="modalJoined">—</span></div>
+      <div class="modal-row"><span class="modal-row-label">Next Billing</span><span class="modal-row-value" id="modalNextBilling">—</span></div>
+      <div class="modal-row"><span class="modal-row-label">Payment Method</span><span class="modal-row-value" id="modalCard">—</span></div>
+      <div class="modal-row"><span class="modal-row-label">Status</span><span class="modal-row-value" id="modalStatus">—</span></div>
+      <div class="modal-row"><span class="modal-row-label">Phone</span><span class="modal-row-value" id="modalPhone">—</span></div>
+      <div style="margin-top:20px; display:flex; gap:10px;">
+        <button class="btn-sm btn-sm-outline" style="flex:1;" onclick="closeModal()">Close</button>
+        <button class="btn-sm btn-sm-primary" style="flex:1;" onclick="closeModal()">Edit Member</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ----------------------------------------------------------------
+    // MOCK DATA (replace with API calls to your backend)
+    // ----------------------------------------------------------------
+    var members = [
+      { id:1, firstName:'Sarah',   lastName:'Mitchell',  email:'sarah.m@email.com',    phone:'(865) 555-0101', plan:'Adult',  monthly:37, location:'Dandridge',     joined:'Jan 12, 2024', nextBilling:'Apr 12, 2025', card:'Visa •••• 4242',   status:'active',    isNew:false },
+      { id:2, firstName:'Robert',  lastName:'Hensley',   email:'rob.h@email.com',       phone:'(865) 555-0102', plan:'Perio',  monthly:60, location:'Dandridge',     joined:'Feb 3, 2024',  nextBilling:'Apr 3, 2025',  card:'MC •••• 8881',    status:'active',    isNew:false },
+      { id:3, firstName:'Ashley',  lastName:'Caldwell',  email:'ashley.c@email.com',    phone:'(865) 555-0103', plan:'Child',  monthly:33, location:'Jefferson City', joined:'Feb 18, 2024', nextBilling:'Apr 18, 2025', card:'Amex •••• 1005', status:'active',    isNew:false },
+      { id:4, firstName:'Marcus',  lastName:'Durbin',    email:'m.durbin@email.com',    phone:'(865) 555-0104', plan:'Adult',  monthly:37, location:'Jefferson City', joined:'Mar 1, 2024',  nextBilling:'Apr 1, 2025',  card:'Visa •••• 6633',   status:'active',    isNew:false },
+      { id:5, firstName:'Linda',   lastName:'Pratt',     email:'linda.p@email.com',     phone:'(865) 555-0105', plan:'Perio',  monthly:60, location:'Dandridge',     joined:'Mar 5, 2024',  nextBilling:'Apr 5, 2025',  card:'MC •••• 3329',    status:'active',    isNew:false },
+      { id:6, firstName:'Tyler',   lastName:'Brooks',    email:'t.brooks@email.com',    phone:'(865) 555-0106', plan:'Adult',  monthly:37, location:'Dandridge',     joined:'Mar 8, 2025',  nextBilling:'Apr 8, 2025',  card:'Visa •••• 0044',   status:'active',    isNew:true  },
+      { id:7, firstName:'Jessica', lastName:'Owens',     email:'j.owens@email.com',     phone:'(865) 555-0107', plan:'Child',  monthly:33, location:'Jefferson City', joined:'Mar 9, 2025',  nextBilling:'Apr 9, 2025',  card:'MC •••• 7712',    status:'active',    isNew:true  },
+      { id:8, firstName:'David',   lastName:'Thornton',  email:'d.thornton@email.com',  phone:'(865) 555-0108', plan:'Adult',  monthly:37, location:'Dandridge',     joined:'Jun 14, 2023', nextBilling:'—',            card:'Visa •••• 9901',   status:'cancelled', isNew:false },
+      { id:9, firstName:'Karen',   lastName:'Langley',   email:'k.langley@email.com',   phone:'(865) 555-0109', plan:'Perio',  monthly:60, location:'Dandridge',     joined:'Aug 20, 2023', nextBilling:'Apr 20, 2025', card:'Amex •••• 4456', status:'active',    isNew:false },
+      { id:10,firstName:'Brandon', lastName:'Eastwood',  email:'b.east@email.com',      phone:'(865) 555-0110', plan:'Adult',  monthly:37, location:'Jefferson City', joined:'Sep 7, 2023',  nextBilling:'Apr 7, 2025',  card:'Visa •••• 2287',   status:'active',    isNew:false },
+    ];
+
+    var ADMIN_PASS = 'EDS2025!'; // placeholder — will be replaced by real auth
+
+    // ----------------------------------------------------------------
+    // AUTH
+    // ----------------------------------------------------------------
+    function handleLogin() {
+      var pw = document.getElementById('adminPassword').value;
+      var err = document.getElementById('loginError');
+      if (pw === ADMIN_PASS) {
+        showView('view-admin');
+        loadData();
+      } else {
+        err.style.display = 'block';
+        document.getElementById('adminPassword').value = '';
+      }
+    }
+
+    function handleLogout() {
+      showView('view-login');
+      document.getElementById('adminPassword').value = '';
+    }
+
+    // ----------------------------------------------------------------
+    // VIEWS / PAGES
+    // ----------------------------------------------------------------
+    function showView(id) {
+      document.querySelectorAll('.view').forEach(function(v) { v.classList.remove('active'); });
+      document.getElementById(id).classList.add('active');
+    }
+
+    function showPage(id, link) {
+      document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.sidebar-link').forEach(function(l) { l.classList.remove('active'); });
+      if (link) link.classList.add('active');
+      var titles = { 'page-overview':'Overview', 'page-members':'All Members', 'page-plans':'Plan Configuration' };
+      document.getElementById('pageTitle').textContent = titles[id] || '';
+    }
+
+    // ----------------------------------------------------------------
+    // DATA
+    // ----------------------------------------------------------------
+    function loadData() {
+      var active = members.filter(function(m) { return m.status === 'active'; });
+      var newThisMonth = members.filter(function(m) { return m.isNew; });
+      var cancelled = members.filter(function(m) { return m.status === 'cancelled'; });
+      var mrr = active.reduce(function(sum, m) { return sum + m.monthly; }, 0);
+      var arr = mrr * 12;
+      var adultCount = active.filter(function(m) { return m.plan === 'Adult'; }).length;
+      var perioCount = active.filter(function(m) { return m.plan === 'Perio'; }).length;
+      var childCount = active.filter(function(m) { return m.plan === 'Child'; }).length;
+      var total = active.length;
+
+      // Stats
+      document.getElementById('statActive').textContent = total;
+      document.getElementById('statNewThisMonth').textContent = '+' + newThisMonth.length;
+      document.getElementById('statMRR').textContent = '$' + mrr.toLocaleString();
+      document.getElementById('statARR').textContent = '$' + arr.toLocaleString();
+      document.getElementById('statCancelled').textContent = cancelled.length;
+      document.getElementById('statChurn').textContent = Math.round((cancelled.length / members.length) * 100) + '%';
+
+      // Breakdown
+      setTimeout(function() {
+        document.getElementById('barAdult').style.width = Math.round((adultCount/total)*100) + '%';
+        document.getElementById('barPerio').style.width = Math.round((perioCount/total)*100) + '%';
+        document.getElementById('barChild').style.width = Math.round((childCount/total)*100) + '%';
+      }, 200);
+      document.getElementById('countAdult').textContent = adultCount + ' members';
+      document.getElementById('pctAdult').textContent = Math.round((adultCount/total)*100) + '%';
+      document.getElementById('countPerio').textContent = perioCount + ' members';
+      document.getElementById('pctPerio').textContent = Math.round((perioCount/total)*100) + '%';
+      document.getElementById('countChild').textContent = childCount + ' members';
+      document.getElementById('pctChild').textContent = Math.round((childCount/total)*100) + '%';
+
+      // Recent table (last 5)
+      var recent = members.slice().reverse().slice(0, 5);
+      var rtBody = document.getElementById('recentTable');
+      rtBody.innerHTML = '';
+      recent.forEach(function(m) {
+        var row = document.createElement('tr');
+        row.innerHTML = '<td><div class="td-name">' + m.firstName + ' ' + m.lastName + '</div><div class="td-sub">' + m.email + '</div></td>' +
+          '<td><span class="badge badge-' + m.plan.toLowerCase() + '">' + m.plan + '</span></td>' +
+          '<td>' + m.location + '</td>' +
+          '<td>' + m.joined + '</td>' +
+          '<td><span class="badge badge-' + m.status + '">' + (m.status==='active'?'● Active':'✗ Cancelled') + '</span></td>';
+        rtBody.appendChild(row);
+      });
+
+      // All members table
+      renderMembersTable(members);
+    }
+
+    function renderMembersTable(data) {
+      var tbody = document.getElementById('membersTable');
+      var noRes = document.getElementById('noResults');
+      tbody.innerHTML = '';
+
+      if (data.length === 0) {
+        noRes.style.display = 'block';
+        document.getElementById('membersCount').textContent = '0 members';
+        return;
+      }
+      noRes.style.display = 'none';
+      document.getElementById('membersCount').textContent = data.length + ' member' + (data.length !== 1 ? 's' : '');
+
+      data.forEach(function(m) {
+        var row = document.createElement('tr');
+        row.style.cursor = 'pointer';
+        row.onclick = function() { openModal(m); };
+        row.innerHTML =
+          '<td><div class="td-name">' + m.firstName + ' ' + m.lastName + '</div><div class="td-sub">' + m.email + '</div></td>' +
+          '<td><span class="badge badge-' + m.plan.toLowerCase() + '">' + m.plan + '</span></td>' +
+          '<td>' + m.location + '</td>' +
+          '<td>$' + m.monthly + '/mo</td>' +
+          '<td>' + m.joined + '</td>' +
+          '<td>' + (m.nextBilling === '—' ? '<span style="color:var(--text-muted)">—</span>' : m.nextBilling) + '</td>' +
+          '<td><span class="badge badge-' + m.status + '">' + (m.status==='active'?'● Active':'✗ Cancelled') + '</span></td>' +
+          '<td><button class="btn-sm btn-sm-outline" onclick="event.stopPropagation(); openModal(window._memberById[' + m.id + '])">View</button></td>';
+        tbody.appendChild(row);
+      });
+
+      // Build lookup map
+      window._memberById = {};
+      members.forEach(function(m) { window._memberById[m.id] = m; });
+    }
+
+    function filterMembers() {
+      var search = document.getElementById('memberSearch').value.toLowerCase();
+      var plan = document.getElementById('planFilter').value.toLowerCase();
+      var status = document.getElementById('statusFilter').value.toLowerCase();
+      var loc = document.getElementById('locationFilter').value.toLowerCase();
+      var filtered = members.filter(function(m) {
+        var nameMatch = (m.firstName + ' ' + m.lastName + ' ' + m.email).toLowerCase().includes(search);
+        var planMatch = !plan || m.plan.toLowerCase() === plan;
+        var statusMatch = !status || m.status === status;
+        var locMatch = !loc || m.location.toLowerCase().includes(loc === 'jefferson' ? 'jefferson' : 'dandridge');
+        return nameMatch && planMatch && statusMatch && locMatch;
+      });
+      renderMembersTable(filtered);
+    }
+
+    function exportCSV() {
+      var headers = ['First Name','Last Name','Email','Phone','Plan','Monthly','Location','Joined','Next Billing','Status'];
+      var rows = members.map(function(m) {
+        return [m.firstName, m.lastName, m.email, m.phone, m.plan, '$'+m.monthly, m.location, m.joined, m.nextBilling, m.status];
+      });
+      var csv = [headers].concat(rows).map(function(r) { return r.join(','); }).join('\n');
+      var blob = new Blob([csv], { type: 'text/csv' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'elite-dental-members-' + new Date().toISOString().slice(0,10) + '.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // ----------------------------------------------------------------
+    // MODAL
+    // ----------------------------------------------------------------
+    function openModal(m) {
+      document.getElementById('modalName').textContent = m.firstName + ' ' + m.lastName;
+      document.getElementById('modalEmail').textContent = m.email;
+      document.getElementById('modalPlan').textContent = m.plan + ' Membership';
+      document.getElementById('modalLocation').textContent = m.location;
+      document.getElementById('modalMonthly').textContent = '$' + m.monthly + '/month';
+      document.getElementById('modalJoined').textContent = m.joined;
+      document.getElementById('modalNextBilling').textContent = m.nextBilling;
+      document.getElementById('modalCard').textContent = m.card;
+      document.getElementById('modalStatus').textContent = m.status.charAt(0).toUpperCase() + m.status.slice(1);
+      document.getElementById('modalPhone').textContent = m.phone;
+      document.getElementById('memberModal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('memberModal').classList.remove('open');
+    }
+
+    document.getElementById('memberModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Keyboard support
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Enter' && document.getElementById('view-login').classList.contains('active')) handleLogin();
+    });
+  </script>
+</body>
+</html>
