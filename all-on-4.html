@@ -89,8 +89,8 @@
     .nav-dd-btn::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--blue-mid);border-radius:1px;transition:width .3s}
     .nav-dd-btn:hover,.nav-dd-btn.open{color:var(--blue-mid)}.nav-dd-btn:hover::after,.nav-dd-btn.open::after{width:100%}
     .nav-dd-btn .dd-chev{transition:transform .3s;width:14px;height:14px;flex-shrink:0}.nav-dd-btn.open .dd-chev{transform:rotate(180deg)}
-    .nav-dd-panel{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);min-width:230px;padding:8px;z-index:500;display:none;white-space:nowrap}
-    .nav-item-dd:hover .nav-dd-panel,.nav-dd-panel.open{display:block}
+    .nav-dd-panel{position:absolute;top:calc(100% + 2px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);min-width:230px;padding:8px;z-index:500;display:none;white-space:nowrap}
+    .nav-item-dd:hover .nav-dd-panel,.nav-dd-panel.open{display:block}.nav-item-dd::after{content:"";position:absolute;top:100%;left:0;right:0;height:8px;background:transparent}
     .nav-dd-panel a{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;font-size:.92rem;font-weight:600;color:var(--text);transition:background .2s,color .2s}
     .nav-dd-panel a:hover{background:var(--bg-light);color:var(--blue-mid)}
     .nav-dd-panel a.active{color:var(--blue-mid)}
