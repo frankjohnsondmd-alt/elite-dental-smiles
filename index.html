@@ -169,7 +169,7 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 .cta-inner{text-align:center;position:relative;z-index:2;max-width:680px;margin:0 auto}
 .cta-inner h2{color:var(--white);margin-bottom:16px}.cta-inner>p{color:rgba(255,255,255,.8);font-size:1.05rem;line-height:1.7;margin-bottom:36px}
 .cta-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}.cta-note{font-size:.85rem;color:rgba(255,255,255,.5);margin-top:24px}
-.contact-form-wrap{margin-top:48px;max-width:480px;margin-left:auto;margin-right:auto;text-align:left}
+#contact-form{scroll-margin-top:80px}.contact-form-wrap{margin-top:48px;max-width:480px;margin-left:auto;margin-right:auto;text-align:left}
 .contact-form-wrap h3{font-family:var(--font-display);color:var(--white);font-size:1.2rem;text-align:center;margin-bottom:20px}
 .contact-form-wrap .form-group{margin-bottom:16px}
 .contact-form-wrap label{display:block;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
@@ -510,7 +510,7 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
     <p class="cta-note">Friendly team &middot; Same-week appointments &middot; Financing available</p>
     <div class="contact-form-wrap anim-up" id="contact-form">
       <h3>Or Request an Appointment Online</h3>
-      <form id="contactForm" action="https://formsubmit.co/elitedentalpllc@yahoo.com" method="POST">
+      <form id="contactForm" action="https://formsubmit.co/dandridge@elitedentalsmiles.com" method="POST">
         <input type="hidden" name="_subject" value="New Appointment Request — Elite Dental Smiles"/>
         <input type="hidden" name="_captcha" value="false"/>
         <input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/#cta"/>
@@ -607,7 +607,7 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 
   /* Contact form: route to correct office email based on location */
   var contactForm=document.getElementById("contactForm"),locationSelect=document.getElementById("contact-location");
-  if(contactForm&&locationSelect){locationSelect.addEventListener("change",function(){var emails={"Dandridge":"elitedentalpllc@yahoo.com","Jefferson City":"elitedentalpllc@yahoo.com"};contactForm.action="https://formsubmit.co/"+(emails[this.value]||emails["Dandridge"])})}
+  if(contactForm&&locationSelect){locationSelect.addEventListener("change",function(){var emails={"Dandridge":"dandridge@elitedentalsmiles.com","Jefferson City":"jeffersoncity@elitedentalsmiles.com"};contactForm.action="https://formsubmit.co/"+(emails[this.value]||emails["Dandridge"])})}
 })();
 </script>
 <script>
