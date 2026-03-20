@@ -608,6 +608,8 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
   /* Contact form: route to correct office email based on location */
   var contactForm=document.getElementById("contactForm"),locationSelect=document.getElementById("contact-location");
   if(contactForm&&locationSelect){locationSelect.addEventListener("change",function(){var emails={"Dandridge":"dandridge@elitedentalsmiles.com","Jefferson City":"jeffersoncity@elitedentalsmiles.com"};contactForm.action="https://formsubmit.co/"+(emails[this.value]||emails["Dandridge"])})}
+  // Fix scroll-to-contact: offset for fixed navbar
+  document.querySelectorAll('a[href="#contact-form"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var el=document.getElementById("contact-form");if(el){var top=el.getBoundingClientRect().top+window.scrollY-90;window.scrollTo({top:top,behavior:"smooth"})}})});
 })();
 </script>
 <script>
