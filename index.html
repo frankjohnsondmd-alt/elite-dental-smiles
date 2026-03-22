@@ -259,6 +259,16 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 @media(max-width:960px){.services-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){.services-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.services-grid{grid-template-columns:1fr}}
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:none;padding:20px 24px;text-align:left;font-size:1rem;font-weight:600;color:var(--navy);cursor:pointer;transition:background var(--transition),color var(--transition)}
+.faq-question:hover{background:var(--bg-light)}
+.faq-question[aria-expanded="true"]{color:var(--blue-mid)}
+.faq-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--bg-light);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;transition:transform var(--transition),background var(--transition)}
+.faq-icon::before{content:"+";font-size:1rem;font-weight:700;color:var(--blue-mid);line-height:1}
+.faq-question[aria-expanded="true"] .faq-icon{transform:rotate(45deg);background:var(--blue-mid);border-color:var(--blue-mid)}
+.faq-question[aria-expanded="true"] .faq-icon::before{color:var(--white)}
+.faq-answer{padding:0 24px 20px;font-size:.97rem;color:var(--text-muted);line-height:1.7}
 </style>
   <link rel="preload" as="image" href="images/logo.png"/>
   <link rel="preload" as="image" href="images/team-hero.jpg" fetchpriority="high"/>
@@ -272,6 +282,7 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-R2EVNKP5X2');</script>
   
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dentist", "name": "Elite Dental Smiles", "url": "https://www.elitedentalsmiles.com", "logo": "https://www.elitedentalsmiles.com/images/logo.png", "image": "https://www.elitedentalsmiles.com/images/og-image.jpg", "description": "Elite Dental Smiles offers sedation dentistry, dental implants, cosmetic dentistry, and family dental care in Dandridge and Jefferson City, TN. Nobel Biocare certified implant team.", "priceRange": "$$", "telephone": ["+18653975422", "+18654758331"], "email": "info@elitedentalsmiles.com", "medicalSpecialty": "Dentistry", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"], "opens": "08:00", "closes": "17:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:00", "closes": "13:00"}], "hasMap": ["https://maps.google.com/?q=334+TN-92+%231+Dandridge+TN+37725", "https://maps.google.com/?q=683+E+Broadway+Blvd+Jefferson+City+TN+37760"], "location": [{"@type": "PostalAddress", "streetAddress": "334 TN-92 #1", "addressLocality": "Dandridge", "addressRegion": "TN", "postalCode": "37725", "addressCountry": "US"}, {"@type": "PostalAddress", "streetAddress": "683 E Broadway Blvd", "addressLocality": "Jefferson City", "addressRegion": "TN", "postalCode": "37760", "addressCountry": "US"}], "geo": [{"@type": "GeoCoordinates", "latitude": 36.0343, "longitude": -83.5638}, {"@type": "GeoCoordinates", "latitude": 36.1218, "longitude": -83.4927}], "areaServed": ["Dandridge, TN", "Jefferson City, TN", "Morristown, TN", "Newport, TN", "Sevierville, TN", "Gatlinburg, TN", "East Tennessee"], "sameAs": ["https://www.facebook.com/EliteDentalSmiles"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Dental Services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "MedicalProcedure", "name": "Sedation Dentistry"}}, {"@type": "Offer", "itemOffered": {"@type": "MedicalProcedure", "name": "Dental Implants"}}, {"@type": "Offer", "itemOffered": {"@type": "MedicalProcedure", "name": "All-on-4 Dental Implants"}}, {"@type": "Offer", "itemOffered": {"@type": "MedicalProcedure", "name": "Cosmetic Dentistry"}}, {"@type": "Offer", "itemOffered": {"@type": "MedicalProcedure", "name": "Porcelain Veneers"}}, {"@type": "Offer", "itemOffered": {"@type": "MedicalProcedure", "name": "Teeth Whitening"}}]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are you accepting new patients?","acceptedAnswer":{"@type":"Answer","text":"Yes, we are welcoming new patients at both our Dandridge and Jefferson City locations. We can usually get you in within a few days. Call us or request an appointment online."}},{"@type":"Question","name":"Do you accept dental insurance?","acceptedAnswer":{"@type":"Answer","text":"Our Jefferson City location is insurance-friendly and works with most major plans. Our Dandridge location is fee-for-service, which means no insurance restrictions and no surprise billing. We can provide a detailed estimate before any treatment begins."}},{"@type":"Question","name":"Do you offer payment plans?","acceptedAnswer":{"@type":"Answer","text":"Yes. We offer flexible financing options so cost is not a barrier to getting the care you need. Ask our team about options when you call."}},{"@type":"Question","name":"What if I have dental anxiety?","acceptedAnswer":{"@type":"Answer","text":"We specialize in anxiety-free dentistry. We offer nitrous oxide, oral sedation, and IV sedation depending on your needs and procedure. Many of our most anxious patients now look forward to their appointments."}},{"@type":"Question","name":"How often should I come in for a cleaning?","acceptedAnswer":{"@type":"Answer","text":"Most patients benefit from cleanings every six months. Some patients with gum disease or other conditions may need more frequent visits. We will give you a personalized recommendation at your first appointment."}},{"@type":"Question","name":"Do you see children?","acceptedAnswer":{"@type":"Answer","text":"Yes. We see pediatric patients at both locations and make every effort to create a calm, positive first experience. Early dental visits set the foundation for a lifetime of healthy habits."}},{"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"We serve patients throughout East Tennessee including Dandridge, Jefferson City, Morristown, Newport, Sevierville, and the greater Knoxville area. Most patients are within 30 minutes of one of our two offices."}},{"@type":"Question","name":"Do you offer dental implants?","acceptedAnswer":{"@type":"Answer","text":"Yes. Dr. Johnson holds a Nobel Biocare implant surgery certification and places implants in-house at both locations. You do not need to be referred to a specialist. We handle the full process from consultation through final restoration."}},{"@type":"Question","name":"What if I have a dental emergency?","acceptedAnswer":{"@type":"Answer","text":"Call us first. We keep time available for dental emergencies and can usually see you the same day. For after-hours emergencies, our voicemail provides guidance on next steps."}},{"@type":"Question","name":"What makes Elite Dental Smiles different from other practices?","acceptedAnswer":{"@type":"Answer","text":"We do not rush. We take time to explain your options, answer your questions, and build a treatment plan around your goals, not a production quota. Sedation options are available for every level of anxiety, and we treat patients the way we would want our own families treated."}}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Elite Dental Smiles", "url": "https://www.elitedentalsmiles.com", "potentialAction": {"@type": "SearchAction", "target": "https://www.elitedentalsmiles.com/?s={search_term_string}", "query-input": "required name=search_term_string"}}</script>
 </head>
 <body>
@@ -500,6 +511,58 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
   </div>
 </section>
 
+<section id="faq" class="section bg-light" aria-label="Frequently Asked Questions">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">Common Questions</span>
+      <h2>Frequently Asked Questions</h2>
+      <p class="section-sub">Everything you need to know before your first visit.</p>
+    </div>
+    <div class="faq-list anim-up">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Are you accepting new patients?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>Yes, we are welcoming new patients at both our Dandridge and Jefferson City locations. We can usually get you in within a few days. Call us or request an appointment online.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Do you accept dental insurance?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>Our Jefferson City location is insurance-friendly and works with most major plans. Our Dandridge location is fee-for-service, which means no insurance restrictions and no surprise billing. We can provide a detailed estimate before any treatment begins.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Do you offer payment plans?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>Yes. We offer flexible financing options so cost is not a barrier to getting the care you need. Ask our team about options when you call.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What if I have dental anxiety?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>We specialize in anxiety-free dentistry. We offer nitrous oxide, oral sedation, and IV sedation depending on your needs and procedure. Many of our most anxious patients now look forward to their appointments.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How often should I come in for a cleaning?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>Most patients benefit from cleanings every six months. Some patients with gum disease or other conditions may need more frequent visits. We will give you a personalized recommendation at your first appointment.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Do you see children?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>Yes. We see pediatric patients at both locations and make every effort to create a calm, positive first experience. Early dental visits set the foundation for a lifetime of healthy habits.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What areas do you serve?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>We serve patients throughout East Tennessee including Dandridge, Jefferson City, Morristown, Newport, Sevierville, and the greater Knoxville area. Most patients are within 30 minutes of one of our two offices.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Do you offer dental implants?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>Yes. Dr. Johnson holds a Nobel Biocare implant surgery certification and places implants in-house at both locations. You do not need to be referred to a specialist. We handle the full process from consultation through final restoration.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What if I have a dental emergency?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>Call us first. We keep time available for dental emergencies and can usually see you the same day. For after-hours emergencies, our voicemail provides guidance on next steps.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What makes Elite Dental Smiles different from other practices?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer" hidden>We do not rush. We take time to explain your options, answer your questions, and build a treatment plan around your goals, not a production quota. Sedation options are available for every level of anxiety, and we treat patients the way we would want our own families treated.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="cta" class="section cta-section" aria-label="Contact Us">
   <div class="cta-shapes" aria-hidden="true"><div class="cta-blob cta-blob--1"></div><div class="cta-blob cta-blob--2"></div></div>
   <div class="container cta-inner anim-up">
@@ -617,6 +680,16 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 (function(){
   var grid=document.getElementById("reviewsGrid");
   if(!grid)return;
+  /* FAQ accordion */
+  document.querySelectorAll(".faq-question").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var expanded=btn.getAttribute("aria-expanded")==="true";
+      var answer=btn.nextElementSibling;
+      btn.setAttribute("aria-expanded",!expanded);
+      if(expanded){answer.hidden=true}else{answer.hidden=false}
+    });
+  });
+
   var cards=Array.prototype.slice.call(grid.querySelectorAll(".review-card"));
   for(var i=cards.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=cards[i];cards[i]=cards[j];cards[j]=t}
   cards.forEach(function(c,idx){grid.appendChild(c);if(idx>=3)c.style.display="none"});
