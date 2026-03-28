@@ -131,18 +131,19 @@
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.anim-up{opacity:1;transform:none}}
 
     /* NAV */
-    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent;transition:background .4s,box-shadow .4s;border-bottom:1px solid transparent}
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent;transition:background .4s,box-shadow .4s,transform .5s cubic-bezier(.22,1,.36,1);border-bottom:1px solid transparent;transform:translateY(0)}
     #navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);box-shadow:var(--shadow-sm);border-bottom-color:var(--border)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0;gap:6px;height:76px}
+    #navbar.nav-hidden{transform:translateY(-100%)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:10px;height:auto}
     .logo{display:flex;align-items:center;flex-shrink:0}
-    .nav-logo-img{width:220px;height:auto;object-fit:contain;display:block}
+    .nav-logo-img{width:280px;height:auto;object-fit:contain;display:block}
     .footer-logo-img{width:220px;height:auto;filter:brightness(0) invert(1);opacity:.85}
     .nav-links{display:flex;gap:10px;flex-wrap:nowrap}
-    .nav-link{font-size:1.05rem;font-weight:600;color:var(--text);transition:color .3s;padding:6px 4px}
+    .nav-link{font-size:1.15rem;font-weight:600;color:var(--text);transition:color .3s;padding:6px 4px}
     .nav-link:hover{color:var(--blue-mid)}
     .nav-actions{display:flex;align-items:center;gap:12px}
     .nav-fb{color:var(--text-muted);transition:color .3s}.nav-fb:hover{color:var(--blue-mid)}
-    .nav-cta{font-size:1.05rem;padding:10px 20px}
+    .nav-cta{font-size:1.15rem;padding:12px 24px}
     .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer}
     .hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
     .nav-item-dd{position:relative}
@@ -286,6 +287,7 @@
         <p class="loc-hero-sub">Elite Dental Smiles has been caring for Dandridge families since 2007. We offer everything from routine cleanings to sedation dentistry and dental implants all in one comfortable, welcoming office.</p>
         <div class="loc-hero-btns">
           <a href="tel:+18653975422" class="btn btn-white btn-lg">📞 (865) 397-5422</a>
+          <a href="index.html#contact-form" class="btn btn-white btn-lg" style="background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.5);color:var(--white)">Send a Message</a>
           <a href="index.html#membership" class="btn btn-outline-white btn-lg">View Membership Plans</a>
         </div>
         <div class="loc-hero-trust">
@@ -512,8 +514,8 @@
 <script>
 (function(){
   "use strict";
-  var navbar=document.getElementById("navbar"),ticking=false;
-  function onScroll(){if(!ticking){window.requestAnimationFrame(function(){navbar.classList.toggle("scrolled",window.scrollY>40);ticking=false});ticking=true}}
+  var navbar=document.getElementById("navbar"),ticking=false,lastScrollY=0,scrollDelta=0,hideThreshold=60;
+  function onScroll(){if(!ticking){window.requestAnimationFrame(function(){var y=window.scrollY;navbar.classList.toggle("scrolled",y>40);if(y>100){var diff=y-lastScrollY;if(diff>0){scrollDelta+=diff;if(scrollDelta>hideThreshold){navbar.classList.add("nav-hidden");scrollDelta=0}}else{scrollDelta=0;navbar.classList.remove("nav-hidden")}}else{navbar.classList.remove("nav-hidden");scrollDelta=0}lastScrollY=y;ticking=false});ticking=true}}
   window.addEventListener("scroll",onScroll,{passive:true});onScroll();
   var hamburger=document.getElementById("hamburger"),navLinks=document.getElementById("navLinks"),navActions=document.querySelector(".nav-actions");
   hamburger.addEventListener("click",function(){var isOpen=hamburger.classList.toggle("open");navLinks.classList.toggle("open");hamburger.setAttribute("aria-expanded",isOpen)});
