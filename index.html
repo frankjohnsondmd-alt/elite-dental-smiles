@@ -51,21 +51,22 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 .ba-handle-knob:focus-visible{outline:3px solid var(--white);outline-offset:2px;box-shadow:0 0 0 6px rgba(13,92,143,.5)}
 [data-ba]{touch-action:none;-webkit-user-select:none;user-select:none}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.anim-up{opacity:1;transform:none}}
-#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent;transition:background .4s,box-shadow .4s;border-bottom:1px solid transparent}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent;transition:background .4s,box-shadow .4s,transform .35s ease;border-bottom:1px solid transparent;transform:translateY(0)}
 #navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow-sm);border-bottom-color:var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0;gap:6px}
+#navbar.nav-hidden{transform:translateY(-100%)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:10px}
 .logo{display:flex;align-items:center;flex-shrink:0;min-width:200px}
-.nav-logo-img{width:270px;height:58px;object-fit:contain;max-width:none;display:block}
+.nav-logo-img{width:300px;height:66px;object-fit:contain;max-width:none;display:block}
 .footer-logo-img{width:280px;height:auto;filter:brightness(0) invert(1);opacity:.85}
-.nav-links{display:flex;gap:10px;flex-wrap:nowrap}
-.nav-link{font-size:1.05rem;font-weight:700;color:var(--text);transition:color .3s;position:relative}
+.nav-links{display:flex;gap:14px;flex-wrap:nowrap}
+.nav-link{font-size:1.15rem;font-weight:700;color:var(--text);transition:color .3s;position:relative}
 .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--blue-mid);border-radius:1px;transition:width .3s}
 .nav-link:hover{color:var(--blue-mid)}.nav-link:hover::after{width:100%}
 .nav-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .nav-fb{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;color:var(--blue);background:rgba(0,51,102,.08);transition:background var(--transition),color var(--transition),transform var(--transition)}
 .nav-fb svg{width:18px;height:18px}
 .nav-fb:hover{background:var(--blue);color:var(--white);transform:translateY(-2px)}
-.nav-cta{margin-left:0;padding:10px 20px;font-size:1.05rem}
+.nav-cta{margin-left:0;padding:12px 24px;font-size:1.15rem}
 .hamburger{display:none;background:none;border:none;padding:6px;flex-direction:column;gap:5px}
 .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:transform .3s,opacity .3s}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -292,7 +293,7 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 
 <nav id="navbar" aria-label="Main navigation">
   <div class="nav-inner container">
-    <a href="#" class="logo"><img src="images/logo.png" alt="Elite Dental Smiles" class="nav-logo-img" width="270" height="58"/></a>
+    <a href="#" class="logo"><img src="images/logo.png" alt="Elite Dental Smiles" class="nav-logo-img" width="300" height="66"/></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" class="nav-link">About</a></li>
       <li class="nav-item-dd">
@@ -635,8 +636,8 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 /* ELITE DENTAL SMILES — script.js */
 (function(){
   "use strict";
-  var navbar=document.getElementById("navbar"),ticking=false;
-  function onScroll(){if(!ticking){window.requestAnimationFrame(function(){navbar.classList.toggle("scrolled",window.scrollY>40);ticking=false});ticking=true}}
+  var navbar=document.getElementById("navbar"),ticking=false,lastScrollY=0;
+  function onScroll(){if(!ticking){window.requestAnimationFrame(function(){var y=window.scrollY;navbar.classList.toggle("scrolled",y>40);if(y>100){if(y>lastScrollY){navbar.classList.add("nav-hidden")}else{navbar.classList.remove("nav-hidden")}}else{navbar.classList.remove("nav-hidden")}lastScrollY=y;ticking=false});ticking=true}}
   window.addEventListener("scroll",onScroll,{passive:true});onScroll();
 
   var hamburger=document.getElementById("hamburger"),navLinks=document.getElementById("navLinks"),navActions=document.querySelector(".nav-actions");
