@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Membership Club — Elite Dental Smiles</title>
+  <title>Membership Club - Elite Dental Smiles</title>
   <meta name="description" content="Join the Elite Dental Smiles in-house membership club. No insurance needed. Simple, affordable dental care in Dandridge & Jefferson City, TN."/>
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -612,15 +612,15 @@
       <div class="summary-bar" id="summaryBar">
         <div class="summary-bar-item">
           <span class="label">Location</span>
-          <span class="value" id="summaryLocation">—</span>
+          <span class="value" id="summaryLocation"> - </span>
         </div>
         <div class="summary-bar-item">
           <span class="label">Plan</span>
-          <span class="value" id="summaryPlan">—</span>
+          <span class="value" id="summaryPlan"> - </span>
         </div>
         <div class="summary-bar-item">
           <span class="label">Monthly</span>
-          <span class="value" id="summaryPrice">—</span>
+          <span class="value" id="summaryPrice"> - </span>
         </div>
         <span class="change-link" onclick="goToStep(1)">Change plan</span>
       </div>
@@ -675,15 +675,15 @@
       <div class="summary-bar">
         <div class="summary-bar-item">
           <span class="label">Location</span>
-          <span class="value" id="summaryLocation2">—</span>
+          <span class="value" id="summaryLocation2"> - </span>
         </div>
         <div class="summary-bar-item">
           <span class="label">Plan</span>
-          <span class="value" id="summaryPlan2">—</span>
+          <span class="value" id="summaryPlan2"> - </span>
         </div>
         <div class="summary-bar-item">
           <span class="label">Patient</span>
-          <span class="value" id="summaryPatient">—</span>
+          <span class="value" id="summaryPatient"> - </span>
         </div>
         <span class="change-link" onclick="goToStep(2)">Edit info</span>
       </div>
@@ -740,19 +740,19 @@
         <div class="confirm-details">
           <div class="confirm-row">
             <span>Member</span>
-            <span id="confirmName">—</span>
+            <span id="confirmName"> - </span>
           </div>
           <div class="confirm-row">
             <span>Plan</span>
-            <span id="confirmPlan">—</span>
+            <span id="confirmPlan"> - </span>
           </div>
           <div class="confirm-row">
             <span>Location</span>
-            <span id="confirmLocation">—</span>
+            <span id="confirmLocation"> - </span>
           </div>
           <div class="confirm-row">
             <span>Monthly charge</span>
-            <span id="confirmMonthly">—</span>
+            <span id="confirmMonthly"> - </span>
           </div>
           <div class="confirm-row">
             <span>Status</span>
@@ -800,9 +800,9 @@
     }
 
     function updateSummaryBars() {
-      var planText = selectedPlan ? selectedPlan.name : '—';
-      var priceText = selectedPlan ? '$' + selectedPlan.price + '/mo' : '—';
-      var locText = selectedLocation || '—';
+      var planText = selectedPlan ? selectedPlan.name : ' - ';
+      var priceText = selectedPlan ? '$' + selectedPlan.price + '/mo' : ' - ';
+      var locText = selectedLocation || ' - ';
 
       document.getElementById('summaryLocation').textContent = locText;
       document.getElementById('summaryPlan').textContent = planText;
@@ -812,15 +812,15 @@
       document.getElementById('summaryPlan2').textContent = planText;
 
       var first = (document.getElementById('firstName').value || '') + ' ' + (document.getElementById('lastName').value || '');
-      document.getElementById('summaryPatient').textContent = first.trim() || '—';
+      document.getElementById('summaryPatient').textContent = first.trim() || ' - ';
 
       document.getElementById('orderPlan').textContent = planText;
       document.getElementById('orderMonthly').textContent = priceText;
-      document.getElementById('orderRecurring').textContent = selectedPlan ? '$' + selectedPlan.price : '—';
+      document.getElementById('orderRecurring').textContent = selectedPlan ? '$' + selectedPlan.price : ' - ';
       var total = selectedPlan ? (selectedPlan.price + 99) : 99;
       document.getElementById('orderTotal').textContent = '$' + total + '.00';
 
-      document.getElementById('confirmName').textContent = first.trim() || '—';
+      document.getElementById('confirmName').textContent = first.trim() || ' - ';
       document.getElementById('confirmPlan').textContent = planText;
       document.getElementById('confirmLocation').textContent = locText;
       document.getElementById('confirmMonthly').textContent = priceText;
