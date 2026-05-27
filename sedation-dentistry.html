@@ -186,6 +186,16 @@
     .cta-inner h2{color:var(--white);margin-bottom:16px}.cta-inner>p{color:rgba(255,255,255,.8);font-size:1.05rem;line-height:1.7;margin-bottom:36px}
     .cta-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}.cta-note{font-size:1.05rem;color:rgba(255,255,255,.5);margin-top:24px}
 
+
+    /* SEDATION FORM */
+    .sedation-form-card{max-width:760px;margin:0 auto;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:36px 32px}
+    .sedation-form-card h2{text-align:center;margin-bottom:10px}.sedation-form-card>p{text-align:center;color:var(--text-muted);font-size:1.05rem;line-height:1.7;margin-bottom:28px}
+    .sedation-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}.sedation-form .form-group{display:flex;flex-direction:column;gap:6px}.sedation-form .form-group--full{grid-column:1/-1}
+    .sedation-form label{font-size:.88rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.04em}.sedation-form input,.sedation-form select,.sedation-form textarea{width:100%;padding:13px 14px;border:2px solid var(--border);border-radius:12px;background:var(--white);color:var(--text);font-family:var(--font-body);font-size:1rem;transition:border-color .2s,box-shadow .2s}.sedation-form textarea{min-height:110px;resize:vertical}.sedation-form input:focus,.sedation-form select:focus,.sedation-form textarea:focus{outline:none;border-color:var(--blue-mid);box-shadow:0 0 0 3px rgba(26,123,196,.12)}.sedation-form .btn{grid-column:1/-1;justify-content:center;margin-top:4px}.form-note{grid-column:1/-1;font-size:.9rem;color:var(--text-muted);line-height:1.6;text-align:center}
+    .availability-note{max-width:840px;margin:28px auto 0;background:rgba(26,123,196,.08);border:1px solid rgba(26,123,196,.18);border-radius:var(--radius);padding:18px 20px;color:var(--text-muted);font-size:1rem;line-height:1.7}.availability-note strong{color:var(--navy)}
+    .procedure-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.procedure-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px 24px}.procedure-card h3{font-size:1.05rem;margin-bottom:8px}.procedure-card p{font-size:1rem;color:var(--text-muted);line-height:1.7}
+    .sedation-sticky-bar{display:none}
+
     /* BREADCRUMB */
     .breadcrumb{padding:16px 0;font-size:1.05rem;color:var(--text-muted)}
     .breadcrumb a{color:var(--blue-mid);font-weight:500}.breadcrumb a:hover{text-decoration:underline}
@@ -215,6 +225,11 @@
       .hamburger{display:flex}.section{padding:60px 0}
       .options-grid{grid-template-columns:1fr}.benefits-grid{grid-template-columns:1fr}
       .cta-buttons{flex-direction:column;align-items:center}.cta-buttons .btn-lg{width:100%;max-width:340px;justify-content:center}
+
+      .sedation-form{grid-template-columns:1fr}.sedation-form-card{padding:28px 22px}.procedure-grid{grid-template-columns:1fr}
+      .sedation-sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:1200;display:flex;gap:8px;padding:10px 12px;background:rgba(255,255,255,.96);border-top:1px solid var(--border);box-shadow:0 -6px 20px rgba(0,34,68,.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+      .sedation-sticky-bar a{flex:1;justify-content:center;padding:11px 12px;font-size:.9rem;white-space:normal;text-align:center}.sedation-sticky-bar .btn-primary{box-shadow:none}body{padding-bottom:72px}
+
       .nav-logo-img{width:180px}.section-header{margin-bottom:36px}.hero-grid{padding:24px 0 60px}
     }
     @media(max-width:480px){
@@ -232,8 +247,19 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2EVNKP5X2"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-R2EVNKP5X2');</script>
 
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is sedation dentistry safe?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our IV sedation dentist is certified by the Tennessee Board of Dentistry, which requires specific training, ongoing education, and safety protocols beyond a standard dental license. Your vital signs are continuously monitored throughout every sedation procedure. Millions of dental sedation procedures are performed safely every year. Will I be completely unconscious? It depends on the type of sedation. With nitrous oxide, you're fully awake but relaxed. With oral sedation, you're drowsy and "}}]}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is sedation dentistry safe?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our IV sedation dentist is certified by the Tennessee Board of Dentistry, which requires specific training, ongoing education, and safety protocols beyond a standard dental license. Your vital signs are continuously monitored throughout every sedation procedure. Millions of dental sedation procedures are performed safely every year."}}, {"@type": "Question", "name": "Will I be completely unconscious?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the type of sedation. With nitrous oxide, you're fully awake but relaxed. With oral sedation, you're drowsy and responsive but deeply calm. With IV sedation, you're in a sleep-like state and will have little to no memory of the procedure though you're technically not under general anesthesia. All three levels are different from the unconsciousness used in hospital surgeries."}}, {"@type": "Question", "name": "Do I need someone to drive me home?", "acceptedAnswer": {"@type": "Answer", "text": "For nitrous oxide only, you can typically drive yourself home the effects wear off within minutes. For oral sedation and IV sedation, you will need a responsible adult to drive you to and from your appointment. You'll also want someone to stay with you for a few hours afterward as the medication fully wears off."}}, {"@type": "Question", "name": "How much does sedation dentistry cost?", "acceptedAnswer": {"@type": "Answer", "text": "Cost varies depending on the type and duration of sedation. Nitrous oxide is the most affordable option. Oral sedation falls in the middle. IV sedation is the most involved and priced accordingly. We'll give you a clear estimate before anything is scheduled. CareCredit financing and our Membership Club (15% off all treatment) are both available to help make it accessible."}}, {"@type": "Question", "name": "Does insurance cover sedation?", "acceptedAnswer": {"@type": "Answer", "text": "Some insurance plans cover a portion of sedation costs, particularly when it's deemed medically necessary. Many plans, however, treat sedation as an elective add-on. We'll review your coverage and give you an honest picture of what to expect out of pocket before you commit to anything."}}, {"@type": "Question", "name": "Can I eat or drink before my sedation appointment?", "acceptedAnswer": {"@type": "Answer", "text": "For IV sedation, you'll need to fast for a period before your appointment typically nothing to eat or drink (except water) for 6–8 hours beforehand. For oral sedation and nitrous, guidelines are less strict but we'll give you specific instructions when you schedule. Always follow the instructions we give you for your specific sedation type."}}, {"@type": "Question", "name": "Do you offer sedation for kids?", "acceptedAnswer": {"@type": "Answer", "text": "Nitrous oxide is safe and commonly used for children at our practice. It helps anxious young patients relax without the need for deeper sedation. For more complex pediatric cases, we'll discuss options during your child's consultation and always prioritize the safest approach for their age and health."}}]}</script>
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Is sedation dentistry safe?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our IV sedation dentist is certified by the Tennessee Board of Dentistry, which requires specific training, ongoing education, and safety protocols beyond a standard dental license. Your vital signs are continuously monitored throughout every sedation procedure. Sedation options vary by health history, procedure, provider availability, and location."}},
+      {"@type": "Question", "name": "Will I be completely unconscious?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the type of sedation. With nitrous oxide, you are fully awake but relaxed. With oral sedation, you are drowsy and responsive but deeply calm. With IV sedation, you are in a sleep-like state and will have little to no memory of the procedure, though you are technically not under general anesthesia."}},
+      {"@type": "Question", "name": "Do I need someone to drive me home?", "acceptedAnswer": {"@type": "Answer", "text": "For nitrous oxide only, you can typically drive yourself home because the effects wear off within minutes. For oral sedation and IV sedation, you will need a responsible adult to drive you to and from your appointment."}},
+      {"@type": "Question", "name": "How much does sedation dentistry cost?", "acceptedAnswer": {"@type": "Answer", "text": "Cost varies depending on the type and duration of sedation. We will give you a clear estimate before anything is scheduled. CareCredit financing and our Membership Club are available to help make treatment accessible."}},
+      {"@type": "Question", "name": "Does insurance cover sedation?", "acceptedAnswer": {"@type": "Answer", "text": "Some insurance plans cover a portion of sedation costs, particularly when it is deemed medically necessary. Many plans treat sedation as an elective add-on. We will review your coverage and give you an honest picture before you commit."}},
+      {"@type": "Question", "name": "Can I eat or drink before my sedation appointment?", "acceptedAnswer": {"@type": "Answer", "text": "For IV sedation, you will need to fast for a period before your appointment. For oral sedation and nitrous, guidelines are less strict, but we will give you specific instructions when you schedule."}},
+      {"@type": "Question", "name": "Do you offer sedation for kids?", "acceptedAnswer": {"@type": "Answer", "text": "Nitrous oxide is safe and commonly used for children at our practice. For more complex pediatric cases, we discuss options during the consultation and prioritize the safest approach for the child's age and health."}}
+    ]
+  }</script>
 </head>
 <body>
 
@@ -267,7 +293,7 @@
     </ul>
     <div class="nav-actions">
       <a href="https://www.facebook.com/EliteDentalSmiles" target="_blank" rel="noopener" class="nav-fb" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-      <a href="tel:+18653975422" class="btn btn-primary nav-cta">Call Now</a>
+      <a href="tel:+18653975422" class="btn btn-primary nav-cta" data-conversion="sedation_phone_dandridge" data-location="Dandridge">Call About Sedation</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
@@ -292,12 +318,12 @@
       <h1>Sedation Dentistry in <em>Dandridge &amp; Jefferson City</em>, TN</h1>
       <p class="hero-sub">If fear has kept you from the dentist for months, years, or decades - you're not alone, and you're not out of options. Patients travel from Knoxville, Morristown, Sevierville, and across East Tennessee for our sedation dentistry program. Nitrous oxide, oral sedation, and IV sedation available.</p>
       <div class="hero-actions">
-        <a href="tel:+18653975422" class="btn btn-primary btn-lg">Call to Schedule</a>
-        <a href="index.html#contact-form" class="btn btn-primary btn-lg">Request Appointment</a>
+        <a href="tel:+18653975422" class="btn btn-primary btn-lg" data-conversion="sedation_phone_dandridge" data-location="Dandridge">Call About Sedation Options</a>
+        <a href="#sedation-consult-form" class="btn btn-primary btn-lg" data-conversion="sedation_cta_form">Request a Sedation Consultation</a>
       </div>
       <div class="hero-phones">
-        <div class="hero-phone-item">Dandridge: <a href="tel:+18653975422"><strong>(865) 397-5422</strong></a></div>
-        <div class="hero-phone-item">Jefferson City: <a href="tel:+18654758331"><strong>(865) 475-8331</strong></a></div>
+        <div class="hero-phone-item">Dandridge: <a href="tel:+18653975422" data-conversion="sedation_phone_dandridge" data-location="Dandridge"><strong>(865) 397-5422</strong></a></div>
+        <div class="hero-phone-item">Jefferson City: <a href="tel:+18654758331" data-conversion="sedation_phone_jefferson_city" data-location="Jefferson City"><strong>(865) 475-8331</strong></a></div>
       </div>
       <div class="hero-trust"><div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="hero-trust-text">Trusted by thousands of anxious patients across East Tennessee</span></div></div>
     </div>
@@ -392,7 +418,7 @@
         <span class="option-tag">Most popular · Deepest relaxation</span>
         <ul class="option-list">
           <li>Deeply sedated feels like sleep</li>
-          <li>Ideal for extensive or surgical work</li>
+          <li>Ideal for extensive or complex care</li>
           <li>Instantly adjustable by your doctor</li>
           <li>Continuous vital sign monitoring</li>
         </ul>
@@ -413,10 +439,13 @@
     <div style="text-align:center;margin-top:40px" class="anim-up">
       <p style="font-size:1rem;color:var(--text-muted);margin-bottom:20px">Not sure which level is right for you? Just call us and ask we'll talk through it.</p>
       <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
-        <a href="tel:+18653975422" class="btn btn-primary btn-lg">Dandridge: (865) 397-5422</a>
-        <a href="tel:+18654758331" class="btn btn-primary btn-lg">Jefferson City: (865) 475-8331</a>
+        <a href="tel:+18653975422" class="btn btn-primary btn-lg" data-conversion="sedation_phone_dandridge" data-location="Dandridge">Dandridge: (865) 397-5422</a>
+        <a href="tel:+18654758331" class="btn btn-primary btn-lg" data-conversion="sedation_phone_jefferson_city" data-location="Jefferson City">Jefferson City: (865) 475-8331</a>
       </div>
     </div>
+  </div>
+  <div class="container">
+    <div class="availability-note anim-up"><strong>A quick note about availability:</strong> sedation options vary by health history, procedure, provider schedule, and location. Our team will help determine the safest option for you before anything is scheduled.</div>
   </div>
 </section>
 
@@ -458,7 +487,7 @@
       <article class="benefit-card anim-up anim-delay-2">
         <div class="benefit-icon">💰</div>
         <h3>Affordable Options</h3>
-        <p>Sedation is available at both locations with flexible financing through CareCredit and our Membership Club. Comfort doesn't have to be out of reach.</p>
+        <p>Sedation options are planned case by case, with flexible financing through CareCredit and our Membership Club. Comfort doesn't have to be out of reach.</p>
       </article>
     </div>
   </div>
@@ -501,7 +530,7 @@
           <div class="why-icon-circle">🏡</div>
           <div class="why-item-body">
             <h3>Right Here in East Tennessee</h3>
-            <p>No referrals to Knoxville. No traveling to a hospital. All sedation procedures happen at our Dandridge and <a href="jefferson-city-dentist.html">Jefferson City office</a>s close to home.</p>
+            <p>Most sedation care can be planned close to home at our Dandridge and <a href="jefferson-city-dentist.html">Jefferson City office</a>s. The safest option depends on your health history, procedure, provider availability, and location.</p>
           </div>
         </div>
       </div>
@@ -513,9 +542,9 @@
         </div>
         <div class="why-credentials">
           <div class="why-cred-item">IV Sedation Certified Tennessee Board of Dentistry (License #8571)</div>
-          <div class="why-cred-item">Oral &amp; Nitrous Sedation Available at Both Locations</div>
+          <div class="why-cred-item">Nitrous, oral, and IV sedation options discussed case by case</div>
           <div class="why-cred-item">Continuous Vital Sign Monitoring (Pulse Oximetry, BP, Heart Rate)</div>
-          <div class="why-cred-item">Emergency Reversal Agents On-Site (Flumazenil, Naloxone)</div>
+          <div class="why-cred-item">Emergency reversal agents maintained for sedation care</div>
           <div class="why-cred-item">ADA &amp; TDA Members All Doctors</div>
           <div class="why-cred-item">In practice since 2007 Locally owned &amp; operated</div>
         </div>
@@ -599,6 +628,24 @@
 
 <div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80Z" fill="#ffffff"/></svg></div>
 
+
+<!-- SEDATION FOR COMPREHENSIVE CARE -->
+<section class="section bg-white" aria-label="Sedation for Comprehensive Dental Care">
+  <div class="container">
+    <div class="section-header anim-up">
+      <span class="section-tag">More Done Comfortably</span>
+      <h2>Sedation for Larger <em>Dental Needs</em></h2>
+      <p class="section-sub">Sedation can be especially helpful when anxiety, time, or the amount of treatment needed has kept you from moving forward.</p>
+    </div>
+    <div class="procedure-grid">
+      <article class="procedure-card anim-up"><h3>Delayed Dental Work</h3><p>For patients who have put off treatment for years, sedation can make the first step feel possible again.</p></article>
+      <article class="procedure-card anim-up anim-delay-1"><h3>Extractions &amp; Implant-Related Care</h3><p>Comfort options can help with extractions, implant-related treatment, and longer appointments when appropriate.</p></article>
+      <article class="procedure-card anim-up anim-delay-2"><h3>Crowns &amp; Full-Mouth Treatment</h3><p>When several teeth need attention, sedation may allow us to complete more care in fewer visits.</p></article>
+    </div>
+  </div>
+</section>
+
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80Z" fill="#f0f4f8"/></svg></div>
 
 <!-- RELATED SERVICES -->
 <section class="section bg-light" aria-label="Related Services">
@@ -691,7 +738,7 @@
       <div class="anim-up" style="font-size:.95rem;line-height:1.8;color:var(--text-muted)">
         <p style="margin-bottom:16px"><strong style="color:var(--navy)">Provider credentials:</strong> Dr. George F. Johnson III, DMD (Tennessee Dental License #8571) holds a comprehensive sedation permit issued by the Tennessee Board of Dentistry, authorizing the administration of nitrous oxide, oral conscious sedation, and intravenous (IV) sedation. All sedation team members maintain current ACLS (Advanced Cardiovascular Life Support) certification.</p>
         <p style="margin-bottom:16px"><strong style="color:var(--navy)">Monitoring protocols:</strong> During every sedation procedure, patients are continuously monitored using pulse oximetry (blood oxygen levels), non-invasive blood pressure monitoring, capnography (CO2 monitoring for IV sedation), and electrocardiography (heart rhythm). A dedicated team member monitors vitals throughout the entire procedure.</p>
-        <p style="margin-bottom:16px"><strong style="color:var(--navy)">Emergency preparedness:</strong> Emergency reversal agents including flumazenil (benzodiazepine reversal) and naloxone (opioid reversal) are immediately available at both locations. Emergency oxygen delivery systems, suction equipment, and a full emergency drug kit are maintained and inspected regularly per <a href="https://www.ada.org/resources/practice/practice-management/sedation-resource-center" style="color:var(--blue-mid)" target="_blank" rel="noopener">ADA</a> and Tennessee Board of Dentistry guidelines.</p>
+        <p style="margin-bottom:16px"><strong style="color:var(--navy)">Emergency preparedness:</strong> Emergency reversal agents including flumazenil (benzodiazepine reversal) and naloxone (opioid reversal), emergency oxygen delivery systems, suction equipment, and emergency drug kits are maintained according to sedation protocols and Tennessee Board of Dentistry guidelines.</p>
         <p style="margin-bottom:16px"><strong style="color:var(--navy)">Potential risks:</strong> As with any medical procedure, sedation dentistry carries some risks. These may include nausea, drowsiness, headache, or temporary changes in blood pressure. Rare but serious risks include allergic reaction, respiratory depression, or cardiovascular complications. All risks are discussed during your pre-sedation evaluation, and a written consent form is reviewed and signed before any sedation is administered.</p>
         <p><strong style="color:var(--navy)">Not every patient is a candidate.</strong> Certain health conditions, medications, or allergies may make sedation inadvisable. Your medical history is carefully reviewed before any sedation is recommended. We will always recommend the safest approach for your individual situation.</p>
       </div>
@@ -700,6 +747,30 @@
 </section>
 
 <!-- CTA -->
+
+<!-- SEDATION CONSULT FORM -->
+<section id="sedation-consult-form" class="section bg-white" aria-label="Request a Sedation Consultation">
+  <div class="container">
+    <div class="sedation-form-card anim-up">
+      <h2>Request a <em>Sedation Consultation</em></h2>
+      <p>Tell us where you prefer to be seen and what level of sedation you are interested in. A team member will follow up to help you choose the safest next step.</p>
+      <form class="sedation-form" id="sedationConsultForm" action="https://formsubmit.co/dandridge@elitedentalsmiles.com" method="POST">
+        <input type="hidden" name="_subject" value="Sedation Consultation Request - Elite Dental Smiles"/>
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/sedation-dentistry#sedation-consult-form"/>
+        <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off"/>
+        <div class="form-group"><label for="sedation-name">Name</label><input id="sedation-name" name="name" type="text" autocomplete="name" required/></div>
+        <div class="form-group"><label for="sedation-phone">Phone</label><input id="sedation-phone" name="phone" type="tel" autocomplete="tel" required/></div>
+        <div class="form-group"><label for="sedation-location">Preferred Location</label><select id="sedation-location" name="preferred_location" required><option value="Dandridge">Dandridge</option><option value="Jefferson City">Jefferson City</option></select></div>
+        <div class="form-group"><label for="sedation-interest">Sedation Interest</label><select id="sedation-interest" name="sedation_interest" required><option value="Not sure">Not sure</option><option value="Nitrous oxide">Nitrous oxide</option><option value="Oral sedation">Oral sedation</option><option value="IV sedation">IV sedation</option></select></div>
+        <div class="form-group form-group--full"><label for="sedation-time">Best Time to Call</label><input id="sedation-time" name="best_time_to_call" type="text" placeholder="Morning, afternoon, or specific day"/></div>
+        <div class="form-group form-group--full"><label for="sedation-note">Anything you want us to know before we call? <span style="font-weight:400;text-transform:none;letter-spacing:0">Optional</span></label><textarea id="sedation-note" name="message" placeholder="Example: I am nervous about extractions, I have avoided the dentist for years, or I am not sure which sedation option I need."></textarea></div>
+        <button type="submit" class="btn btn-primary btn-lg">Request a Sedation Consultation</button>
+        <p class="form-note">Please do not include private medical details in this form. We will review health history and sedation safety with you directly.</p>
+      </form>
+    </div>
+  </div>
+</section>
 
 <!-- SEDATION CITY PAGES -->
 <section class="section bg-light" aria-label="Sedation Dentistry Near You">
@@ -725,10 +796,10 @@
     <h2>You Don't Have to Be Afraid Anymore</h2>
     <p>One phone call is all it takes. Tell us you're anxious that's it. We'll take care of everything else. No judgment. No pressure. Just the care you've been putting off, finally done right.</p>
     <div class="cta-buttons">
-      <a href="tel:+18653975422" class="btn btn-white btn-lg">Dandridge: (865) 397-5422</a>
-      <a href="tel:+18654758331" class="btn btn-outline-white btn-lg">Jefferson City: (865) 475-8331</a>
+      <a href="tel:+18653975422" class="btn btn-white btn-lg" data-conversion="sedation_phone_dandridge" data-location="Dandridge">Dandridge: (865) 397-5422</a>
+      <a href="tel:+18654758331" class="btn btn-outline-white btn-lg" data-conversion="sedation_phone_jefferson_city" data-location="Jefferson City">Jefferson City: (865) 475-8331</a>
     </div>
-    <p class="cta-note">Same-week appointments · All sedation levels available · Financing available</p>
+    <p class="cta-note">Sedation options vary by patient, procedure, provider schedule, and location · Financing available</p>
   </div>
 </section>
 
@@ -738,11 +809,17 @@
   <div class="container footer-grid">
     <div class="footer-brand"><a href="index.html" class="logo logo--footer"><img src="images/logo.png" alt="Elite Dental Smiles" class="nav-logo-img footer-logo-img" width="540" height="148" loading="lazy" decoding="async"/></a><p>Gentle, compassionate dentistry for patients who deserve a better experience. Sedation options available for every level of anxiety.</p></div>
     <div class="footer-col"><h4>Quick Links</h4><a href="index.html#about">About Us</a><a href="sedation-dentistry.html">Sedation Dentistry</a><a href="dental-implants.html">Dental Implants</a><a href="index.html#services">Smile Gallery</a><a href="index.html#doctors">Doctors</a><a href="index.html#membership">Membership</a></div>
-    <div class="footer-col"><h4>Contact</h4><a href="tel:+18653975422">Dandridge: (865) 397-5422</a><a href="tel:+18654758331">Jeff City: (865) 475-8331</a><a href="mailto:dandridge@elitedentalsmiles.com">dandridge@elitedentalsmiles.com</a></div>
-    <div class="footer-col"><h4>Office Hours</h4><span style="font-size:.88rem">Mon Thu: 8:00 AM 5:00 PM</span><span style="font-size:.88rem">Fri Sun: Closed</span><a href="tel:+18653975422" style="margin-top:8px;color:var(--gold);font-weight:600;font-size:.88rem">Call to Schedule →</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:+18653975422" data-conversion="sedation_phone_dandridge" data-location="Dandridge">Dandridge: (865) 397-5422</a><a href="tel:+18654758331" data-conversion="sedation_phone_jefferson_city" data-location="Jefferson City">Jeff City: (865) 475-8331</a><a href="mailto:dandridge@elitedentalsmiles.com">dandridge@elitedentalsmiles.com</a></div>
+    <div class="footer-col"><h4>Office Hours</h4><span style="font-size:.88rem">Mon Thu: 8:00 AM 5:00 PM</span><span style="font-size:.88rem">Fri Sun: Closed</span><a href="tel:+18653975422" style="margin-top:8px;color:var(--gold);font-weight:600;font-size:.88rem" data-conversion="sedation_phone_dandridge" data-location="Dandridge">Call to Schedule →</a></div>
   </div>
   <div class="container footer-bottom"><span>&copy; 2026 Elite Dental Smiles, PLLC. All rights reserved.</span><div class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a></div></div>
 </footer>
+
+
+<div class="sedation-sticky-bar" aria-label="Sedation consultation quick actions">
+  <a href="tel:+18653975422" class="btn btn-primary" data-conversion="sedation_phone_dandridge" data-location="Dandridge">Call</a>
+  <a href="#sedation-consult-form" class="btn btn-primary" data-conversion="sedation_sticky_form">Request Consult</a>
+</div>
 
 <script>
 (function(){
@@ -775,6 +852,19 @@
       if(!isOpen){this.setAttribute("aria-expanded","true");answer.classList.add("open")}
     });
   });
+
+  function trackSedationEvent(name, params){
+    if(typeof gtag === "function"){gtag("event", name, params || {})}
+  }
+  document.querySelectorAll("[data-conversion]").forEach(function(el){
+    el.addEventListener("click",function(){trackSedationEvent(this.getAttribute("data-conversion"),{page:"sedation-dentistry",location:this.getAttribute("data-location")||undefined})});
+  });
+  var sedationForm=document.getElementById("sedationConsultForm"),sedationLocation=document.getElementById("sedation-location");
+  if(sedationForm&&sedationLocation){
+    sedationLocation.addEventListener("change",function(){var emails={"Dandridge":"dandridge@elitedentalsmiles.com","Jefferson City":"jeffersoncity@elitedentalsmiles.com"};sedationForm.action="https://formsubmit.co/"+(emails[this.value]||emails.Dandridge)});
+    sedationForm.addEventListener("submit",function(){trackSedationEvent("sedation_form_submit",{page:"sedation-dentistry",location:sedationLocation.value,interest:(document.getElementById("sedation-interest")||{}).value})});
+  }
+
 })();
 </script>
 </body>
