@@ -271,44 +271,6 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 .faq-question[aria-expanded="true"] .faq-icon{transform:rotate(45deg);background:var(--blue-mid);border-color:var(--blue-mid)}
 .faq-question[aria-expanded="true"] .faq-icon::before{color:var(--white)}
 .faq-answer{padding:0 24px 20px;font-size:1.05rem;color:var(--text-muted);line-height:1.7}
-
-/* Cinematic homepage hero */
-#hero.hero-cinematic{position:relative;min-height:100vh;padding-top:84px;background:#082f4b;color:var(--white);isolation:isolate;overflow:hidden;display:block}
-#hero.hero-cinematic::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 18%,rgba(74,144,196,.52),transparent 30%),linear-gradient(105deg,rgba(4,27,45,.95) 0%,rgba(7,46,75,.86) 38%,rgba(7,46,75,.26) 68%,rgba(7,46,75,.08) 100%);z-index:1;pointer-events:none}
-#hero.hero-cinematic::after{content:"";position:absolute;inset:auto 0 0 0;height:38%;background:linear-gradient(0deg,rgba(8,47,75,.9),transparent);z-index:1;pointer-events:none}
-.cinematic-slides{position:absolute;inset:0;z-index:0;overflow:hidden;background:#092f4b}
-.cinematic-slide{position:absolute;inset:-4%;background-size:cover;background-position:center;opacity:0;transform:scale(1.05);animation:eliteHeroFade 24s infinite;filter:saturate(1.02) contrast(1.02)}
-.cinematic-slide:nth-child(1){background-image:url('images/team-hero.jpg');animation-delay:0s;background-position:center 38%}
-.cinematic-slide:nth-child(2){background-image:url('images/veneer-real-lifestyle-couple.png');animation-delay:6s;background-position:center 45%}
-.cinematic-slide:nth-child(3){background-image:url('images/veneer-lifestyle-family.jpg');animation-delay:12s;background-position:center 50%}
-.cinematic-slide:nth-child(4){background-image:url('images/dr-johnson.jpg');animation-delay:18s;background-position:center 18%}
-@keyframes eliteHeroFade{0%{opacity:0;transform:scale(1.05) translate3d(0,0,0)}8%{opacity:1}28%{opacity:1}38%{opacity:0;transform:scale(1.14) translate3d(-1.5%,0,0)}100%{opacity:0}}
-.hero-cinematic .container{position:relative;z-index:3}
-.hero-cinematic-grid{min-height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1.03fr) minmax(360px,.72fr);gap:44px;align-items:center;padding:52px 0 110px}
-.hero-copy-card{max-width:660px;color:white;text-shadow:0 2px 18px rgba(0,0,0,.22)}
-.hero-copy-card .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);color:white;backdrop-filter:blur(12px)}
-.hero-copy-card h1{color:white;font-size:clamp(2.75rem,6vw,5.65rem);line-height:.98;letter-spacing:-.055em;margin-bottom:22px;text-wrap:balance}
-.hero-copy-card h1 em{color:#d9efff;text-shadow:0 0 28px rgba(200,221,240,.32)}
-.hero-copy-card .hero-sub{color:rgba(255,255,255,.86);font-size:clamp(1.05rem,1.65vw,1.28rem);max-width:580px;margin:0 0 30px;line-height:1.72}
-.hero-cinematic-actions{display:flex;flex-wrap:wrap;gap:13px;align-items:center;margin-bottom:22px}
-.hero-cinematic-actions .btn-primary{background:white;color:var(--navy);box-shadow:0 12px 30px rgba(0,0,0,.18)}
-.hero-cinematic-actions .btn-outline-white{background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border-color:rgba(255,255,255,.42)}
-.hero-proof-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;color:rgba(255,255,255,.82);font-weight:700;font-size:.98rem}
-.hero-proof-row span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 12px;backdrop-filter:blur(8px)}
-.hero-photo-stack{position:relative;min-height:560px;display:grid;align-items:center}
-.hero-feature-card{position:relative;justify-self:end;width:min(100%,420px);border-radius:30px;overflow:hidden;border:1px solid rgba(255,255,255,.28);box-shadow:0 30px 90px rgba(0,22,42,.38);background:rgba(255,255,255,.1);backdrop-filter:blur(18px);transform:rotate(1.2deg)}
-.hero-feature-card img{width:100%;height:500px;object-fit:cover;object-position:center 35%;filter:saturate(1.02)}
-.hero-feature-caption{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(5,31,52,.78);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:16px;color:white;backdrop-filter:blur(14px)}
-.hero-feature-caption strong{display:block;font-family:var(--font-display);font-size:1.25rem;line-height:1.1}.hero-feature-caption small{display:block;color:rgba(255,255,255,.72);margin-top:5px;font-weight:600}
-.hero-floating-card{position:absolute;left:0;bottom:62px;width:255px;background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.7);border-radius:22px;padding:17px 18px;color:var(--navy);box-shadow:0 18px 48px rgba(0,22,42,.22);backdrop-filter:blur(18px)}
-.hero-floating-card .stars{font-size:1.05rem;letter-spacing:2px;margin-bottom:5px}.hero-floating-card strong{display:block;font-family:var(--font-display);font-size:1.12rem;line-height:1.15}.hero-floating-card span{display:block;color:var(--text-muted);font-size:.92rem;margin-top:5px;font-weight:700}
-.hero-location-strip{position:absolute;z-index:3;left:50%;bottom:26px;transform:translateX(-50%);width:min(1112px,calc(100% - 48px));display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hero-location-card{display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.8);border-radius:18px;padding:15px 18px;color:var(--navy);box-shadow:0 14px 36px rgba(0,34,68,.15);backdrop-filter:blur(18px)}
-.hero-location-card strong{display:block;font-family:var(--font-display);font-size:1.05rem}.hero-location-card span{display:block;color:var(--text-muted);font-size:.92rem}.hero-location-card a{font-weight:800;color:var(--blue)}
-@media(max-width:960px){#hero.hero-cinematic{padding-top:76px}.hero-cinematic-grid{grid-template-columns:1fr;text-align:left;padding:42px 0 190px}.hero-photo-stack{min-height:390px}.hero-feature-card{justify-self:start;width:min(100%,480px)}.hero-feature-card img{height:390px}.hero-floating-card{right:0;left:auto;bottom:18px}.hero-location-strip{grid-template-columns:1fr;bottom:18px}.hero-copy-card h1{font-size:clamp(2.5rem,10vw,4.5rem)}}
-@media(max-width:560px){.hero-cinematic-grid{padding:28px 0 210px}.hero-cinematic-actions .btn{width:100%;justify-content:center}.hero-proof-row span{width:100%;justify-content:center}.hero-photo-stack{display:none}.hero-location-strip{width:calc(100% - 32px)}.hero-location-card{align-items:flex-start;flex-direction:column}.cinematic-slide:nth-child(4){background-image:url('images/team-hero.jpg')}}
-@media(prefers-reduced-motion:reduce){.cinematic-slide{animation:none}.cinematic-slide:first-child{opacity:1;transform:none}}
-
 </style>
   <link rel="preload" as="image" href="images/logo.png"/>
   <link rel="preload" as="image" href="images/team-hero.jpg" fetchpriority="high"/>
@@ -370,40 +332,16 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
 </nav>
 
 <main id="main-content">
-<header id="hero" class="hero-cinematic">
-  <div class="cinematic-slides" aria-hidden="true">
-    <div class="cinematic-slide"></div>
-    <div class="cinematic-slide"></div>
-    <div class="cinematic-slide"></div>
-    <div class="cinematic-slide"></div>
-  </div>
-  <div class="container hero-cinematic-grid">
-    <div class="hero-copy-card anim-up">
-      <span class="pill">East Tennessee Dental Care</span>
-      <h1>Calm, Complete Dentistry for <em>East Tennessee Smiles</em></h1>
-      <p class="hero-sub">Experience dentistry the way it should be. Warm, precise, and built around your comfort, with sedation, implants, cosmetic dentistry, and family care in Dandridge and Jefferson City.</p>
-      <div class="hero-cinematic-actions">
-        <a href="tel:+18653975422" class="btn btn-primary btn-lg">Call Dandridge</a>
-        <a href="tel:+18654758331" class="btn btn-outline-white btn-lg">Call Jefferson City</a>
-        <a href="#contact-form" class="btn btn-outline-white btn-lg">Request an Appointment</a>
-      </div>
-      <div class="hero-proof-row">
-        <span>★★★★★ 830+ Google reviews</span>
-        <span>Sedation available</span>
-        <span>Implants, cosmetic, family care</span>
-      </div>
+<header id="hero">
+  <div class="hero-bg-shapes" aria-hidden="true"><div class="hero-circle hero-circle--1"></div><div class="hero-circle hero-circle--2"></div></div>
+  <div class="container hero-grid">
+    <div class="hero-content anim-up">
+      <h1>You Deserve to <em>Love Your Smile</em></h1>
+      <p class="hero-sub">Experience dentistry the way it should be. Calm, comfortable, and completely pain-free. Our sedation options let you relax deeply while we give you the smile you deserve.</p>
+      <div class="hero-actions"><a href="tel:+18653975422" class="btn btn-primary btn-lg">Dandridge: (865) 397-5422</a><a href="tel:+18654758331" class="btn btn-primary btn-lg">Jeff City: (865) 475-8331</a><a href="#contact-form" class="btn btn-primary btn-lg" style="width:100%;max-width:540px;justify-content:center;margin-top:4px">Send a Message</a></div>
+            <div class="hero-trust"><div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="hero-trust-text">830+ Five Star Google Reviews Across Both Locations</span></div></div>
     </div>
-    <div class="hero-photo-stack anim-up anim-delay-1">
-      <div class="hero-feature-card">
-        <img src="images/team-hero.jpg" alt="The Elite Dental Smiles team" width="800" height="565" loading="eager" fetchpriority="high" decoding="async"/>
-        <div class="hero-feature-caption"><strong>A calmer dental experience</strong><small>Friendly local care, clear options, and comfort at every step.</small></div>
-      </div>
-      <div class="hero-floating-card"><div class="stars">★★★★★</div><strong>Trusted by families across East Tennessee.</strong><span>Two convenient locations.</span></div>
-    </div>
-  </div>
-  <div class="hero-location-strip" aria-label="Office phone numbers">
-    <div class="hero-location-card"><div><strong>Dandridge</strong><span>334 TN-92 #1</span></div><a href="tel:+18653975422">(865) 397-5422</a></div>
-    <div class="hero-location-card"><div><strong>Jefferson City</strong><span>683 E Broadway Blvd</span></div><a href="tel:+18654758331">(865) 475-8331</a></div>
+    <div class="hero-visual anim-up anim-delay-1"><div class="hero-team-photo-wrap"><img src="images/team-hero.jpg" alt="The Elite Dental Smiles team" class="hero-team-photo" width="800" height="500" loading="eager" fetchpriority="high" decoding="async"/></div></div>
   </div>
   <div class="wave wave--hero" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80Z" fill="#ffffff"/></svg></div>
 </header>
