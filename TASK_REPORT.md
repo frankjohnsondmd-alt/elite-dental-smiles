@@ -1,9 +1,9 @@
-# Task Report: Public Website Security Hardening
+# Task Report: Restore New Membership Experience
 
-**Requested:** Apply the recommended public-site security improvements, reduce appointment-form privacy risk, and strengthen spam protection.
+**Requested:** Fix the Elite Dental website after the homepage reverted to old membership data and Illumitrac signup links.
 
-**Done:** Modified `index.html`, `sedation-dentistry.html`, and `vercel.json`; added `.well-known/security.txt`. Removed open-ended message fields from both FormSubmit forms, enabled CAPTCHA while retaining honeypots, added explicit no-private-health-information notices and input limits, restricted sedation callback time to a fixed selection, and added compatible CSP, HSTS, anti-framing, MIME-sniffing, referrer, and browser-permission headers.
+**Done:** Modified `index.html` and `vercel.json`. Restored the current Adult and Perio plans, removed the discontinued child plan and all homepage Illumitrac links, linked enrollment and portal actions to the new membership app, and added permanent source-controlled redirects for the old membership, signup, portal, and admin website paths.
 
-**Build:** Static HTML site with no npm build configured. Parsed `vercel.json` successfully, served the site locally, confirmed the homepage, sedation page, and security contact file return 200, and ran automated checks confirming both FormSubmit forms have CAPTCHA and honeypots enabled with no remaining textarea fields.
+**Build:** Static HTML site with no npm build configured. Parsed `vercel.json`, ran `git diff --check`, served the homepage locally, confirmed the membership app destinations return HTTP 200, and verified the source contains no Illumitrac URLs or child membership card.
 
 **Status:** COMPLETE

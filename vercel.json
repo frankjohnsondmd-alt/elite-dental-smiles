@@ -1,6 +1,48 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/membership",
+      "destination": "https://elite-dental-membership.vercel.app",
+      "permanent": false
+    },
+    {
+      "source": "/membership.html",
+      "destination": "https://elite-dental-membership.vercel.app",
+      "permanent": false
+    },
+    {
+      "source": "/membership-signup",
+      "destination": "https://elite-dental-membership.vercel.app/signup",
+      "permanent": false
+    },
+    {
+      "source": "/membership-signup.html",
+      "destination": "https://elite-dental-membership.vercel.app/signup",
+      "permanent": false
+    },
+    {
+      "source": "/membership-portal",
+      "destination": "https://elite-dental-membership.vercel.app/portal",
+      "permanent": false
+    },
+    {
+      "source": "/membership-portal.html",
+      "destination": "https://elite-dental-membership.vercel.app/portal",
+      "permanent": false
+    },
+    {
+      "source": "/membership-admin",
+      "destination": "https://elite-dental-membership.vercel.app/admin",
+      "permanent": false
+    },
+    {
+      "source": "/membership-admin.html",
+      "destination": "https://elite-dental-membership.vercel.app/admin",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
