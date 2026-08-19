@@ -1,0 +1,5 @@
+Contact: mailto:dandridge@elitedentalsmiles.com
+Expires: 2027-08-18T23:59:59Z
+Canonical: https://www.elitedentalsmiles.com/.well-known/security.txt
+Policy: https://www.elitedentalsmiles.com/privacy
+Preferred-Languages: en

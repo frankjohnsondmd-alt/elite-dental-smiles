@@ -727,17 +727,16 @@
       <p>Tell us where you prefer to be seen and what level of sedation you are interested in. A team member will follow up to help you choose the safest next step.</p>
       <form class="sedation-form" id="sedationConsultForm" action="https://formsubmit.co/dandridge@elitedentalsmiles.com" method="POST">
         <input type="hidden" name="_subject" value="Sedation Consultation Request - Elite Dental"/>
-        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_captcha" value="true"/>
         <input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/sedation-dentistry#sedation-consult-form"/>
         <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off"/>
-        <div class="form-group"><label for="sedation-name">Name</label><input id="sedation-name" name="name" type="text" autocomplete="name" required/></div>
-        <div class="form-group"><label for="sedation-phone">Phone</label><input id="sedation-phone" name="phone" type="tel" autocomplete="tel" required/></div>
+        <div class="form-group"><label for="sedation-name">Name</label><input id="sedation-name" name="name" type="text" autocomplete="name" maxlength="100" required/></div>
+        <div class="form-group"><label for="sedation-phone">Phone</label><input id="sedation-phone" name="phone" type="tel" autocomplete="tel" maxlength="30" required/></div>
         <div class="form-group"><label for="sedation-location">Preferred Location</label><select id="sedation-location" name="preferred_location" required><option value="Dandridge">Dandridge</option><option value="Jefferson City">Jefferson City</option></select></div>
         <div class="form-group"><label for="sedation-interest">Sedation Interest</label><select id="sedation-interest" name="sedation_interest" required><option value="Not sure">Not sure</option><option value="Nitrous oxide">Nitrous oxide</option><option value="Oral sedation">Oral sedation</option><option value="IV sedation">IV sedation</option></select></div>
-        <div class="form-group form-group--full"><label for="sedation-time">Best Time to Call</label><input id="sedation-time" name="best_time_to_call" type="text" placeholder="Morning, afternoon, or specific day"/></div>
-        <div class="form-group form-group--full"><label for="sedation-note">Anything you want us to know before we call? <span style="font-weight:400;text-transform:none;letter-spacing:0">Optional</span></label><textarea id="sedation-note" name="message" placeholder="Example: I am nervous about extractions, I have avoided the dentist for years, or I am not sure which sedation option I need."></textarea></div>
+        <div class="form-group form-group--full"><label for="sedation-time">Best Time to Call</label><select id="sedation-time" name="best_time_to_call"><option value="No preference">No preference</option><option value="Morning">Morning</option><option value="Afternoon">Afternoon</option></select></div>
         <button type="submit" class="btn btn-primary btn-lg">Request a Sedation Consultation</button>
-        <p class="form-note">Please do not include private medical details in this form. We will review health history and sedation safety with you directly.</p>
+        <p class="form-note">Please do not include medical, dental, insurance, or other private health information. We will review health history and sedation safety with you directly.</p>
       </form>
     </div>
   </div>
