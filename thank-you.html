@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="robots" content="noindex,follow"/>
+  <title>Request Received | Elite Dental</title>
+  <meta name="description" content="Elite Dental has received your appointment request."/>
+  <link rel="icon" type="image/png" href="images/favicon-32.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <script src="/site-tracking.js" defer></script>
+  <style>
+    :root{--navy:#102a43;--blue:#176b87;--gold:#c99945;--light:#f4f7fa;--text:#334e68;--white:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--light);color:var(--text);font-family:Outfit,Arial,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px}
+    main{width:min(720px,100%);background:var(--white);border-radius:20px;padding:48px;box-shadow:0 18px 50px rgba(16,42,67,.12);text-align:center}
+    img{width:min(280px,80%);height:auto;margin-bottom:30px}
+    .check{width:68px;height:68px;border-radius:50%;background:#e8f6ef;color:#147a48;display:grid;place-items:center;font-size:2rem;font-weight:700;margin:0 auto 20px}
+    h1{font-family:"Playfair Display",Georgia,serif;color:var(--navy);font-size:clamp(2rem,6vw,3rem);margin:0 0 14px}
+    p{font-size:1.08rem;line-height:1.7;margin:0 auto 24px;max-width:590px}
+    .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+    .btn{display:inline-block;padding:14px 20px;border-radius:9px;background:var(--blue);color:var(--white);font-weight:700;text-decoration:none}
+    .btn.secondary{background:var(--navy)}
+    .note{font-size:.9rem;color:#627d98;margin-top:24px}
+    @media(max-width:560px){main{padding:34px 20px}.btn{width:100%}}
+  </style>
+</head>
+<body>
+  <main>
+    <a href="/" aria-label="Elite Dental home"><img src="images/logo.png" alt="Elite Dental"/></a>
+    <div class="check" aria-hidden="true">✓</div>
+    <h1>We received your request.</h1>
+    <p>A member of the Elite Dental team will contact you during business hours. If your concern is urgent, please call the office where you would like to be seen.</p>
+    <div class="actions">
+      <a class="btn" href="tel:+18653975422">Dandridge: (865) 397-5422</a>
+      <a class="btn secondary" href="tel:+18654758331">Jefferson City: (865) 475-8331</a>
+    </div>
+    <p class="note">Monday–Thursday, 8:00 AM–5:00 PM. Closed Friday–Sunday.</p>
+  </main>
+  <script>
+    window.addEventListener("DOMContentLoaded",function(){
+      if(!window.EliteDentalTracking)return;
+      var marker=window.EliteDentalTracking.consumePendingForm();
+      window.EliteDentalTracking.recordConfirmedForm(marker);
+    });
+  </script>
+</body>
+</html>
