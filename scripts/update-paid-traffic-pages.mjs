@@ -133,7 +133,7 @@ await updateFile("index.html", (original) => {
   source = replaceRequired(
     source,
     '<input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/#cta"/>',
-    '<input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/thank-you.html"/>',
+    '<input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/thank-you"/>',
     "homepage success URL"
   );
   return source;
@@ -272,7 +272,7 @@ await updateFile("sedation-dentistry.html", (original) => {
   source = replaceRequired(
     source,
     '<input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/sedation-dentistry#sedation-consult-form"/>',
-    '<input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/thank-you.html"/>',
+    '<input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/thank-you"/>',
     "sedation success URL"
   );
   source = replaceRequired(
