@@ -66,6 +66,14 @@ const homepage = await readFile("index.html", "utf8");
 if (homepage.includes("aggregateRating")) fail("index.html: unsupported aggregateRating remains");
 if (homepage.includes("SearchAction")) fail("index.html: nonfunctional SearchAction remains");
 if (homepage.includes('"dayOfWeek":"Friday"')) fail("index.html: Friday schema hours remain");
+if (!homepage.includes("830+ Google reviews across both locations")) fail("index.html: accurate review-count wording missing");
+if (homepage.includes("830+ Five Star Google Reviews")) fail("index.html: review count incorrectly described as all five-star");
+if (homepage.includes("dandridge-dentist.html") || homepage.includes("jefferson-city-dentist.html")) fail("index.html: legacy .html location schema URL remains");
+
+const jeffersonCity = await readFile(path.join(root, "jefferson-city-dentist.html"), "utf8");
+if (jeffersonCity.includes("easy to find off Highway 92")) fail("jefferson-city-dentist.html: stale Highway 92 FAQ schema remains");
+if (jeffersonCity.includes("Talbott, Newport, Sevierville")) fail("jefferson-city-dentist.html: stale FAQ catchment remains");
+if (!jeffersonCity.includes("on E Broadway/US-11E")) fail("jefferson-city-dentist.html: corrected FAQ location schema missing");
 if (!homepage.includes('data-elite-form="appointment_request"')) fail("index.html: form success marker missing");
 
 const sedation = await readFile("sedation-dentistry.html", "utf8");
