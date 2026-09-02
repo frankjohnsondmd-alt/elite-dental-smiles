@@ -66,7 +66,7 @@ const homepage = await readFile("index.html", "utf8");
 if (homepage.includes("aggregateRating")) fail("index.html: unsupported aggregateRating remains");
 if (homepage.includes("SearchAction")) fail("index.html: nonfunctional SearchAction remains");
 if (homepage.includes('"dayOfWeek":"Friday"')) fail("index.html: Friday schema hours remain");
-if (!homepage.includes("830+ Google reviews across both locations")) fail("index.html: accurate review-count wording missing");
+if (!homepage.includes("4.9 average &middot; 830+ Google reviews across both locations")) fail("index.html: accurate rating and review-count wording missing");
 if (homepage.includes("830+ Five Star Google Reviews")) fail("index.html: review count incorrectly described as all five-star");
 if (homepage.includes("dandridge-dentist.html") || homepage.includes("jefferson-city-dentist.html")) fail("index.html: legacy .html location schema URL remains");
 
