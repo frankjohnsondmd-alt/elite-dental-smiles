@@ -41,6 +41,36 @@
       "source": "/membership-admin.html",
       "destination": "https://elite-dental-membership.vercel.app/admin",
       "permanent": false
+    },
+    {
+      "source": "/veneer-test",
+      "destination": "/veneers",
+      "permanent": true
+    },
+    {
+      "source": "/veneer-test.html",
+      "destination": "/veneers",
+      "permanent": true
+    },
+    {
+      "source": "/rate-our-office-jefferson-city",
+      "destination": "/jefferson-city-dentist",
+      "permanent": true
+    },
+    {
+      "source": "/rate-our-office-jefferson-city.html",
+      "destination": "/jefferson-city-dentist",
+      "permanent": true
+    },
+    {
+      "source": "/jeffersoncity-dentist",
+      "destination": "/jefferson-city-dentist",
+      "permanent": true
+    },
+    {
+      "source": "/jeffersoncity-dentist.html",
+      "destination": "/jefferson-city-dentist",
+      "permanent": true
     }
   ],
   "headers": [
@@ -49,7 +79,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://formsubmit.co; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com; frame-src https://www.google.com https://maps.google.com; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://formsubmit.co; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.gstatic.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://ad.doubleclick.net https://stats.g.doubleclick.net https://*.g.doubleclick.net; frame-src https://www.google.com https://maps.google.com https://td.doubleclick.net https://www.googletagmanager.com; upgrade-insecure-requests"
         },
         {
           "key": "Referrer-Policy",
