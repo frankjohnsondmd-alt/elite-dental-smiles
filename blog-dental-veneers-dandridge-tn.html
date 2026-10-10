@@ -60,19 +60,109 @@
     @media(max-width:600px){.blog-hero{padding:120px 0 60px}.article-body{padding:40px 0 60px}.compare-grid{grid-template-columns:1fr}.highlight-box,.cta-block{padding:28px 20px}}
   </style>
   <script src="/site-tracking.js" defer></script>
+<style id="ed-nav-css">
+/* Canonical site nav for blog articles. Scoped to #navbar.ed-nav so page styles cannot override it. */
+#navbar.ed-nav{--edn-navy:#0a3d66;--edn-blue:#0d5c8f;--edn-mid:#1a7bc4;--edn-text:#0d1b2a;--edn-muted:#4a6d8c;--edn-border:#ccd8e4;--edn-tint:#f0f4f8;position:fixed;top:0;left:0;right:0;z-index:1000;display:block;width:auto;height:auto;margin:0;padding:0;background:rgba(255,255,255,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:0;border-bottom:1px solid var(--edn-border);box-shadow:none;font-family:'Outfit','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.3;color:var(--edn-text);text-align:left;transition:box-shadow .3s}
+#navbar.ed-nav.scrolled{box-shadow:0 2px 12px rgba(0,34,68,.08)}
+#navbar.ed-nav *,#navbar.ed-nav *::before,#navbar.ed-nav *::after{box-sizing:border-box}
+#navbar.ed-nav *{margin:0;padding:0;border:0;float:none;position:static;width:auto;height:auto;min-width:0;max-width:none;background:transparent;box-shadow:none;transform:none;opacity:1;visibility:visible;color:inherit;font:inherit;letter-spacing:normal;text-transform:none;text-decoration:none;text-align:left;list-style:none;white-space:normal}
+#navbar.ed-nav li::before,#navbar.ed-nav li::marker{content:none}
+#navbar.ed-nav .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1240px;height:76px;margin:0 auto;padding:0 24px}
+#navbar.ed-nav .logo{display:flex;align-items:center;flex-shrink:0}
+#navbar.ed-nav .nav-logo-img{display:block;width:220px;height:47px;object-fit:contain}
+#navbar.ed-nav .nav-links{display:flex;align-items:center;gap:20px;flex-wrap:nowrap}
+#navbar.ed-nav .nav-links>li{display:block}
+#navbar.ed-nav .nav-link,#navbar.ed-nav .nav-dd-btn{display:inline-flex;align-items:center;gap:4px;position:relative;font-size:1rem;font-weight:700;color:var(--edn-text);white-space:nowrap;cursor:pointer;transition:color .2s}
+#navbar.ed-nav .nav-link::after,#navbar.ed-nav .nav-dd-btn::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;border-radius:1px;background:var(--edn-mid);transition:width .3s}
+#navbar.ed-nav .nav-link:hover,#navbar.ed-nav .nav-link.active,#navbar.ed-nav .nav-dd-btn:hover,#navbar.ed-nav .nav-dd-btn.open{color:var(--edn-mid)}
+#navbar.ed-nav .nav-link:hover::after,#navbar.ed-nav .nav-link.active::after,#navbar.ed-nav .nav-dd-btn:hover::after,#navbar.ed-nav .nav-dd-btn.open::after{width:100%}
+#navbar.ed-nav .dd-chev{display:block;width:14px;height:14px;flex-shrink:0;transition:transform .3s}
+#navbar.ed-nav .nav-dd-btn.open .dd-chev{transform:rotate(180deg)}
+#navbar.ed-nav .nav-item-dd{position:relative}
+#navbar.ed-nav .nav-dd-panel{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);z-index:500;min-width:230px;padding:8px;background:#fff;border:1px solid var(--edn-border);border-radius:16px;box-shadow:0 8px 32px rgba(0,34,68,.12)}
+#navbar.ed-nav .nav-item-dd::after{content:"";position:absolute;top:100%;left:0;right:0;height:12px}
+#navbar.ed-nav .nav-dd-panel.open{display:block}
+#navbar.ed-nav .nav-dd-panel li{display:block}
+#navbar.ed-nav .nav-dd-panel a{display:block;padding:10px 14px;border-radius:10px;font-size:.98rem;font-weight:600;color:var(--edn-text);white-space:nowrap;transition:background .2s,color .2s}
+#navbar.ed-nav .nav-dd-panel a:hover{background:var(--edn-tint);color:var(--edn-mid)}
+#navbar.ed-nav .nav-mobile-call{display:none}
+#navbar.ed-nav .nav-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+#navbar.ed-nav .nav-fb{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;color:var(--edn-blue);background:rgba(0,51,102,.08);transition:background .3s,color .3s}
+#navbar.ed-nav .nav-fb svg{display:block;width:18px;height:18px}
+#navbar.ed-nav .nav-fb:hover{background:var(--edn-blue);color:#fff}
+#navbar.ed-nav .nav-cta{display:inline-flex;align-items:center;padding:10px 22px;border-radius:50px;background:var(--edn-blue);color:#fff;font-size:1rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 16px rgba(0,51,102,.25);transition:background .3s}
+#navbar.ed-nav .nav-cta:hover{background:var(--edn-navy);color:#fff}
+#navbar.ed-nav .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:10px;margin-right:-10px;cursor:pointer}
+#navbar.ed-nav .hamburger span{display:block;width:24px;height:2px;border-radius:2px;background:var(--edn-navy);transition:transform .3s,opacity .3s}
+#navbar.ed-nav .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#navbar.ed-nav .hamburger.open span:nth-child(2){opacity:0}
+#navbar.ed-nav .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#navbar.ed-nav a:focus-visible,#navbar.ed-nav button:focus-visible{outline:3px solid var(--edn-mid);outline-offset:3px;border-radius:6px}
+.ed-nav-spacer{display:block;height:76px}
+@media (hover:hover) and (min-width:1141px){#navbar.ed-nav .nav-item-dd:hover .nav-dd-panel{display:block}}
+@media (max-width:1240px){#navbar.ed-nav .nav-links{gap:16px}#navbar.ed-nav .nav-link,#navbar.ed-nav .nav-dd-btn{font-size:.95rem}#navbar.ed-nav .nav-logo-img{width:190px;height:41px}}
+@media (max-width:1140px){
+#navbar.ed-nav .nav-inner{height:64px;padding:0 20px}
+.ed-nav-spacer{height:64px}
+#navbar.ed-nav .nav-logo-img{width:170px;height:36px}
+#navbar.ed-nav .nav-actions{display:none}
+#navbar.ed-nav .hamburger{display:flex}
+#navbar.ed-nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;max-height:calc(100vh - 64px);overflow-y:auto;padding:8px 20px 20px;background:#fff;border-top:1px solid var(--edn-border);box-shadow:0 12px 32px rgba(0,34,68,.14)}
+#navbar.ed-nav .nav-links.open{display:flex}
+#navbar.ed-nav .nav-links>li{border-bottom:1px solid var(--edn-tint)}
+#navbar.ed-nav .nav-link,#navbar.ed-nav .nav-dd-btn{display:flex;width:100%;padding:13px 2px;font-size:1.05rem}
+#navbar.ed-nav .nav-link::after,#navbar.ed-nav .nav-dd-btn::after{display:none}
+#navbar.ed-nav .nav-dd-panel{position:static;transform:none;min-width:0;margin:0 0 10px;padding:4px 0 4px 12px;border:0;border-left:2px solid var(--edn-border);border-radius:0;box-shadow:none}
+#navbar.ed-nav .nav-item-dd::after{display:none}
+#navbar.ed-nav .nav-dd-panel a{padding:9px 10px;font-size:1rem;white-space:normal}
+#navbar.ed-nav .nav-links>li.nav-mobile-call{display:flex;flex-direction:column;gap:10px;padding-top:16px;border-bottom:0}
+#navbar.ed-nav .nav-mobile-call-label{display:block;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--edn-muted)}
+#navbar.ed-nav .nav-call-office{display:flex;align-items:center;gap:10px;padding:13px 16px;border-radius:14px;background:var(--edn-blue);color:#fff;font-size:1rem;font-weight:600;white-space:nowrap}
+#navbar.ed-nav .nav-call-office:hover{background:var(--edn-navy);color:#fff}
+#navbar.ed-nav .nav-call-office svg{display:block;width:18px;height:18px;flex-shrink:0}
+#navbar.ed-nav .nav-call-num{margin-left:auto;font-weight:500;opacity:.92}
+}
+@media (max-width:400px){#navbar.ed-nav .nav-inner{padding:0 16px}#navbar.ed-nav .nav-links{padding:8px 16px 18px}#navbar.ed-nav .nav-logo-img{width:150px;height:32px}#navbar.ed-nav .nav-call-office{padding:12px 14px;font-size:.95rem}}
+</style>
 </head>
 <body>
 
-<nav id="navbar" aria-label="Main navigation">
-  <div class="container-wide">
-    <div class="nav-inner">
-      <a href="/" class="logo" aria-label="Elite Dental Home">
-        <img src="images/logo.png" alt="Elite Dental" class="nav-logo-img"/>
-      </a>
-      <div class="nav-actions">
-        <a href="tel:+18653975422" class="nav-cta btn" aria-label="Call Dandridge office">(865) 397-5422</a>
-      </div>
+<nav id="navbar" class="ed-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="Elite Dental home"><img src="images/logo.png" alt="Elite Dental" class="nav-logo-img" width="220" height="47"/></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/#about" class="nav-link">About</a></li>
+      <li class="nav-item-dd">
+        <button type="button" class="nav-dd-btn" id="navDdBtn" aria-expanded="false" aria-haspopup="true" aria-controls="navDdPanel">Services <svg class="dd-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="nav-dd-panel" id="navDdPanel">
+          <li><a href="/sedation-dentistry">Sedation Dentistry</a></li>
+          <li><a href="/dental-implants">Dental Implants</a></li>
+          <li><a href="/all-on-4">All-on-4 Implants</a></li>
+          <li><a href="/veneers">Porcelain Veneers</a></li>
+          <li><a href="/cosmetic-dentistry">Cosmetic Dentistry</a></li>
+          <li><a href="/teeth-whitening">Teeth Whitening</a></li>
+          <li><a href="/emergency-dentistry">Emergency Dentistry</a></li>
+          <li><a href="/crowns-bridges">Crowns &amp; Bridges</a></li>
+          <li><a href="/root-canal">Root Canal</a></li>
+        </ul>
+      </li>
+      <li><a href="/#services" class="nav-link">Gallery</a></li>
+      <li><a href="/#doctors" class="nav-link">Doctors</a></li>
+      <li><a href="/#testimonials" class="nav-link">Reviews</a></li>
+      <li><a href="/#membership" class="nav-link">Membership</a></li>
+      <li><a href="/#directions" class="nav-link">Directions</a></li>
+      <li><a href="/blog" class="nav-link active">Blog</a></li>
+      <li class="nav-mobile-call">
+        <span class="nav-mobile-call-label">Call an office</span>
+        <a href="tel:+18653975422" class="nav-call-office"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="nav-call-name">Dandridge</span><span class="nav-call-num">(865) 397-5422</span></a>
+        <a href="tel:+18654758331" class="nav-call-office"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="nav-call-name">Jefferson City</span><span class="nav-call-num">(865) 475-8331</span></a>
+      </li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://www.facebook.com/EliteDentalSmiles" target="_blank" rel="noopener" class="nav-fb" aria-label="Elite Dental on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      <a href="tel:+18653975422" class="nav-cta" aria-label="Call the Dandridge office at (865) 397-5422">Call Now</a>
     </div>
+    <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -219,5 +309,21 @@
   </div>
 </footer>
 
+<script id="ed-nav-js">
+(function(){
+  var n=document.getElementById("navbar");
+  if(!n||n.getAttribute("data-ed-nav-ready"))return;
+  n.setAttribute("data-ed-nav-ready","1");
+  var h=document.getElementById("hamburger"),l=document.getElementById("navLinks"),b=document.getElementById("navDdBtn"),p=document.getElementById("navDdPanel");
+  function onScroll(){n.classList.toggle("scrolled",window.scrollY>10)}
+  window.addEventListener("scroll",onScroll,{passive:true});onScroll();
+  function closeMenu(){if(!h)return;h.classList.remove("open");l.classList.remove("open");h.setAttribute("aria-expanded","false");h.setAttribute("aria-label","Open menu")}
+  function closeDd(){if(!b)return;b.classList.remove("open");p.classList.remove("open");b.setAttribute("aria-expanded","false")}
+  if(h&&l)h.addEventListener("click",function(e){e.stopPropagation();var o=!h.classList.contains("open");h.classList.toggle("open",o);l.classList.toggle("open",o);h.setAttribute("aria-expanded",o?"true":"false");h.setAttribute("aria-label",o?"Close menu":"Open menu")});
+  if(b&&p)b.addEventListener("click",function(e){e.stopPropagation();var o=!b.classList.contains("open");b.classList.toggle("open",o);p.classList.toggle("open",o);b.setAttribute("aria-expanded",o?"true":"false")});
+  document.addEventListener("click",function(e){if(!n.contains(e.target))closeMenu();if(b&&!b.contains(e.target)&&!(p&&p.contains(e.target)))closeDd()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeMenu();closeDd()}});
+})();
+</script>
 </body>
 </html>

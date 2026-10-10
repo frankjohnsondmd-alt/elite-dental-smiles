@@ -112,6 +112,10 @@
     @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}.footer-bottom{flex-direction:column;gap:12px;text-align:center}}
     @media(max-width:768px){.loc-hero-grid{grid-template-columns:1fr;gap:40px}.loc-info-card{display:none}.section{padding:60px 0}.services-grid{grid-template-columns:1fr 1fr}.why-grid{grid-template-columns:1fr}}
     @media(max-width:480px){.services-grid{grid-template-columns:1fr}.loc-hero-btns{flex-direction:column}}
+      /* mobile-fit: keep header and footer inside phone widths */
+    @media(max-width:600px){.nav-fb{display:none}.nav-inner{gap:8px;padding-left:20px;padding-right:16px}.loc-hero-btns a{justify-content:center;text-align:center}.nav-logo-img{width:min(170px,42vw)}.nav-actions{gap:6px}.nav-cta{font-size:.95rem;padding:9px 14px;white-space:nowrap}.footer-grid{grid-template-columns:1fr;gap:28px}.footer-col a,.footer-col span{overflow-wrap:anywhere}}
+      /* line icons (replaced emojis) */
+    .ico{width:1em;height:1em;display:inline-block;vertical-align:-.125em;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.ico-slot{color:var(--blue-mid,#1569a9)}.why-icon-circle .ico-slot,.cert-icon .ico-slot,.implant-cert-icon .ico-slot{color:#fff}.ico-inline{width:1.05em;height:1.05em;margin-right:.4em;vertical-align:-.15em}
   </style>
   <link rel="preload" as="image" href="images/logo.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -168,7 +172,7 @@
 <section class="loc-hero">
   <div class="container loc-hero-grid">
     <div>
-      <div class="pill pill--light">📍 Serving Newport, TN</div>
+      <div class="pill pill--light"><svg class="ico ico-inline" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></svg>Serving Newport, TN</div>
       <h1>Dentist Near <em>Newport, TN</em></h1>
       <p class="loc-hero-sub">If you're searching for a dentist near Newport, TN, Elite Dental in Dandridge is just 20 minutes away. We offer comprehensive dental care - including sedation dentistry and dental implants - in a relaxed, welcoming environment that makes the drive well worth it.</p>
       <div class="loc-hero-btns">
@@ -184,10 +188,10 @@
     </div>
     <div>
       <div class="loc-info-card">
-        <div class="loc-info-row"><div class="loc-info-icon">📍</div><div><div class="loc-info-label">Nearest Office</div><div class="loc-info-val">334 TN-92 #1<br/>Dandridge, TN 37725</div></div></div>
-        <div class="loc-info-row"><div class="loc-info-icon">📞</div><div><div class="loc-info-label">Phone</div><div class="loc-info-val"><a href="tel:+18653975422">(865) 397-5422</a></div></div></div>
-        <div class="loc-info-row"><div class="loc-info-icon">🚗</div><div><div class="loc-info-label">Distance from Newport</div><div class="loc-info-val">About 20 miles<br/><span style="opacity:.7;font-size:.85rem">via Highway 321</span></div></div></div>
-        <div class="loc-info-row"><div class="loc-info-icon">🕐</div><div><div class="loc-info-label">Hours</div><div class="loc-info-val">Mon–Thu: 8:00 AM–5:00 PM<br/><span style="opacity:.7;font-size:.85rem">Fri–Sun: Closed</span></div></div></div>
+        <div class="loc-info-row"><div class="loc-info-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></svg></div><div><div class="loc-info-label">Nearest Office</div><div class="loc-info-val">334 TN-92 #1<br/>Dandridge, TN 37725</div></div></div>
+        <div class="loc-info-row"><div class="loc-info-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg></div><div><div class="loc-info-label">Phone</div><div class="loc-info-val"><a href="tel:+18653975422">(865) 397-5422</a></div></div></div>
+        <div class="loc-info-row"><div class="loc-info-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" /> <circle cx="7" cy="17" r="2" /> <path d="M9 17h6" /> <circle cx="17" cy="17" r="2" /></svg></div><div><div class="loc-info-label">Distance from Newport</div><div class="loc-info-val">About 20 miles<br/><span style="opacity:.7;font-size:.85rem">via Highway 321</span></div></div></div>
+        <div class="loc-info-row"><div class="loc-info-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" /></svg></div><div><div class="loc-info-label">Hours</div><div class="loc-info-val">Mon–Thu: 8:00 AM–5:00 PM<br/><span style="opacity:.7;font-size:.85rem">Fri–Sun: Closed</span></div></div></div>
       </div>
     </div>
   </div>
@@ -201,12 +205,12 @@
       <p class="section-sub">Everything you'd expect from a top dental practice - sedation, implants, cosmetics, family care - about 20 miles from Newport.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card anim-up"><div class="service-icon">😴</div><h3>Sedation Dentistry</h3><p>Nitrous oxide, oral sedation, and IV sedation. Dr. Johnson is authorized under a comprehensive sedation permit issued by the Tennessee Board of Dentistry. Great for anxious patients.</p><a href="/sedation-dentistry" class="service-link">Learn more →</a></div>
-      <div class="service-card anim-up anim-delay-1"><div class="service-icon">🦷</div><h3>Dental Implants</h3><p>Nobel Biocare certified implant surgery by Dr. Johnson. Permanent tooth replacement that looks and functions like a natural tooth.</p><a href="/dental-implants" class="service-link">Learn more →</a></div>
-      <div class="service-card anim-up anim-delay-2"><div class="service-icon">✨</div><h3>All-on-4 Implants</h3><p>Replace a full arch of teeth with just four implants. Life-changing results, often completed in a single day.</p><a href="/all-on-4" class="service-link">Learn more →</a></div>
-      <div class="service-card anim-up"><div class="service-icon">💎</div><h3>Porcelain Veneers</h3><p>Thin porcelain shells that transform the shape, color, and size of your teeth. One of the most dramatic cosmetic improvements available.</p><a href="/veneers" class="service-link">Learn more →</a></div>
-      <div class="service-card anim-up anim-delay-1"><div class="service-icon">👑</div><h3>Crowns &amp; Bridges</h3><p>Restore cracked, broken, or missing teeth with natural-looking restorations that last 15–20 years with proper care.</p><a href="/crowns-bridges" class="service-link">Learn more →</a></div>
-      <div class="service-card anim-up anim-delay-2"><div class="service-icon">🚨</div><h3>Emergency Dentistry</h3><p>Same-day emergency appointments available. Toothaches, broken teeth, abscesses - call us first before going to urgent care.</p><a href="/emergency-dentistry" class="service-link">Learn more →</a></div>
+      <div class="service-card anim-up"><div class="service-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></svg></div><h3>Sedation Dentistry</h3><p>Nitrous oxide, oral sedation, and IV sedation. Dr. Johnson is authorized under a comprehensive sedation permit issued by the Tennessee Board of Dentistry. Great for anxious patients.</p><a href="/sedation-dentistry" class="service-link">Learn more →</a></div>
+      <div class="service-card anim-up anim-delay-1"><div class="service-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3c-2.2 0-4 1.8-4 4.2 0 2.3.9 3.6 1.6 5.3.6 1.6.7 3.2 1 5.2.3 2 1 3.3 2.1 3.3 1.3 0 1.5-1.6 1.8-3.4.3-1.7.7-3 2.5-3s2.2 1.3 2.5 3c.3 1.8.5 3.4 1.8 3.4 1.1 0 1.8-1.3 2.1-3.3.3-2 .4-3.6 1-5.2.7-1.7 1.6-3 1.6-5.3C21 4.8 19.2 3 17 3c-1.9 0-2.9 1-5 1S8.9 3 7 3z"/></svg></div><h3>Dental Implants</h3><p>Nobel Biocare certified implant surgery by Dr. Johnson. Permanent tooth replacement that looks and functions like a natural tooth.</p><a href="/dental-implants" class="service-link">Learn more →</a></div>
+      <div class="service-card anim-up anim-delay-2"><div class="service-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></svg></div><h3>All-on-4 Implants</h3><p>Replace a full arch of teeth with just four implants. Life-changing results, often completed in a single day.</p><a href="/all-on-4" class="service-link">Learn more →</a></div>
+      <div class="service-card anim-up"><div class="service-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 3 8 9l4 13 4-13-2.5-6" /> <path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z" /> <path d="M2 9h20" /></svg></div><h3>Porcelain Veneers</h3><p>Thin porcelain shells that transform the shape, color, and size of your teeth. One of the most dramatic cosmetic improvements available.</p><a href="/veneers" class="service-link">Learn more →</a></div>
+      <div class="service-card anim-up anim-delay-1"><div class="service-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z" /> <path d="M5 21h14" /></svg></div><h3>Crowns &amp; Bridges</h3><p>Restore cracked, broken, or missing teeth with natural-looking restorations that last 15–20 years with proper care.</p><a href="/crowns-bridges" class="service-link">Learn more →</a></div>
+      <div class="service-card anim-up anim-delay-2"><div class="service-icon"><svg class="ico ico-slot" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 18v-6a5 5 0 1 1 10 0v6" /> <path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z" /> <path d="M21 12h1" /> <path d="M18.5 4.5 18 5" /> <path d="M2 12h1" /> <path d="M12 2v1" /> <path d="m4.929 4.929.707.707" /> <path d="M12 12v6" /></svg></div><h3>Emergency Dentistry</h3><p>Same-day emergency appointments available. Toothaches, broken teeth, abscesses - call us first before going to urgent care.</p><a href="/emergency-dentistry" class="service-link">Learn more →</a></div>
     </div>
   </div>
 </section>
@@ -283,7 +287,7 @@
 
 <section class="cta-section">
   <div class="container">
-    <span class="pill pill--light">📍 Serving Newport, TN</span>
+    <span class="pill pill--light"><svg class="ico ico-inline" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></svg>Serving Newport, TN</span>
     <h2>Ready to Schedule? We're about 20 miles Away.</h2>
     <p>Call either of our East Tennessee offices. Same-week appointments available. New patients always welcome.</p>
     <div class="cta-buttons">
