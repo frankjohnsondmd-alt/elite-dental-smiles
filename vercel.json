@@ -4,42 +4,42 @@
   "redirects": [
     {
       "source": "/membership",
-      "destination": "https://elite-dental-membership.vercel.app",
+      "destination": "https://membership.elitedentalsmiles.com",
       "permanent": false
     },
     {
       "source": "/membership.html",
-      "destination": "https://elite-dental-membership.vercel.app",
+      "destination": "https://membership.elitedentalsmiles.com",
       "permanent": false
     },
     {
       "source": "/membership-signup",
-      "destination": "https://elite-dental-membership.vercel.app/signup",
+      "destination": "https://membership.elitedentalsmiles.com/signup",
       "permanent": false
     },
     {
       "source": "/membership-signup.html",
-      "destination": "https://elite-dental-membership.vercel.app/signup",
+      "destination": "https://membership.elitedentalsmiles.com/signup",
       "permanent": false
     },
     {
       "source": "/membership-portal",
-      "destination": "https://elite-dental-membership.vercel.app/portal",
+      "destination": "https://membership.elitedentalsmiles.com/portal",
       "permanent": false
     },
     {
       "source": "/membership-portal.html",
-      "destination": "https://elite-dental-membership.vercel.app/portal",
+      "destination": "https://membership.elitedentalsmiles.com/portal",
       "permanent": false
     },
     {
       "source": "/membership-admin",
-      "destination": "https://elite-dental-membership.vercel.app/admin",
+      "destination": "https://membership.elitedentalsmiles.com/admin",
       "permanent": false
     },
     {
       "source": "/membership-admin.html",
-      "destination": "https://elite-dental-membership.vercel.app/admin",
+      "destination": "https://membership.elitedentalsmiles.com/admin",
       "permanent": false
     },
     {
