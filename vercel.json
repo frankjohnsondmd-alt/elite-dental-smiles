@@ -3,16 +3,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/membership",
-      "destination": "https://membership.elitedentalsmiles.com",
-      "permanent": false
-    },
-    {
-      "source": "/membership.html",
-      "destination": "https://membership.elitedentalsmiles.com",
-      "permanent": false
-    },
-    {
       "source": "/membership-signup",
       "destination": "https://membership.elitedentalsmiles.com/signup",
       "permanent": false
