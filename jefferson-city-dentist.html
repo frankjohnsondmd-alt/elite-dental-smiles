@@ -167,6 +167,20 @@
     @media(max-width:600px){.nav-fb{display:none}.nav-inner{gap:8px;padding-left:20px;padding-right:16px}.loc-hero-btns a{justify-content:center;text-align:center}.nav-logo-img{width:min(170px,42vw)}.nav-actions{gap:6px}.nav-cta{font-size:.95rem;padding:9px 14px;white-space:nowrap}.footer-grid{grid-template-columns:1fr;gap:28px}.footer-col a,.footer-col span{overflow-wrap:anywhere}}
       /* line icons (replaced emojis) */
     .ico{width:1em;height:1em;display:inline-block;vertical-align:-.125em;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.ico-slot{color:var(--blue-mid,#1569a9)}.why-icon-circle .ico-slot,.cert-icon .ico-slot,.implant-cert-icon .ico-slot{color:#fff}.ico-inline{width:1.05em;height:1.05em;margin-right:.4em;vertical-align:-.15em}
+    /* REQUEST FORM (location pages) */
+    #request-form{scroll-margin-top:90px}
+    .loc-form-wrap{margin:44px auto 0;max-width:480px;text-align:left}
+    .loc-form-wrap h3{font-family:var(--font-display);color:var(--white);font-size:1.25rem;text-align:center;margin-bottom:8px}
+    .cta-section .loc-form-wrap .loc-form-sub{font-size:1rem;opacity:.8;text-align:center;margin:0 auto 20px;max-width:none}
+    .loc-form-wrap .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .loc-form-wrap .form-group{margin-bottom:16px}
+    .loc-form-wrap label{display:block;font-size:.95rem;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+    .loc-form-wrap input{width:100%;padding:12px 16px;border-radius:var(--radius);border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:var(--white);font-family:var(--font-body);font-size:1.05rem;transition:border-color .3s,background .3s}
+    .loc-form-wrap input::placeholder{color:rgba(255,255,255,.45)}
+    .loc-form-wrap input:focus{outline:none;border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.15)}
+    .cta-section .loc-form-wrap .form-note{color:rgba(255,255,255,.72);font-size:.88rem;line-height:1.55;text-align:center;margin:4px 0 12px;max-width:none;opacity:1}
+    .loc-form-wrap .btn-submit{width:100%;justify-content:center;padding:14px 28px;font-size:1rem;margin-top:4px}
+    @media(max-width:480px){.loc-form-wrap .form-row{grid-template-columns:1fr;gap:0}}
   </style>
   <script src="/site-tracking.js" defer></script>
 </head>
@@ -222,7 +236,7 @@
         <p class="loc-hero-sub">Our East Broadway office serves Jefferson City, Talbott, White Pine, Morristown, and nearby communities with preventive, restorative, cosmetic, and urgent dental care.</p>
         <div class="loc-hero-btns">
           <a href="tel:+18654758331" class="btn btn-white btn-lg"><svg class="ico ico-inline" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg>(865) 475-8331</a>
-          <a href="/#contact-form" class="btn btn-white btn-lg">Request an Appointment</a>
+          <a href="#request-form" class="btn btn-white btn-lg">Request an Appointment</a>
           <a href="/emergency-dentistry" class="btn btn-outline-white btn-lg">Urgent Dental Care</a>
         </div>
         <div class="loc-hero-trust">
@@ -432,6 +446,23 @@
         <a href="/dandridge-dentist" class="btn btn-outline-white btn-lg">Dandridge Office →</a>
       </div>
       <p class="cta-note">683 E Broadway Blvd, Jefferson City, TN 37760 · Mon to Thu, 8 AM to 5 PM</p>
+      <div class="loc-form-wrap" id="request-form">
+        <h3>Or Request an Appointment Online</h3>
+        <p class="loc-form-sub">Leave your name and number and our Jefferson City team will call you back during office hours.</p>
+        <form id="locationRequestForm" action="https://formsubmit.co/dandridge@elitedentalsmiles.com" method="POST" data-elite-form="location_page_request" data-location-select="request-location">
+          <input type="hidden" name="_subject" value="New Appointment Request - Jefferson City Page - Elite Dental"/>
+          <input type="hidden" name="_captcha" value="true"/>
+          <input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/thank-you"/>
+          <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off"/>
+          <input type="hidden" id="request-location" name="location" value="Jefferson City"/>
+          <div class="form-row">
+            <div class="form-group"><label for="request-name">Name</label><input type="text" id="request-name" name="name" placeholder="Your full name" autocomplete="name" maxlength="100" required/></div>
+            <div class="form-group"><label for="request-phone">Phone</label><input type="tel" id="request-phone" name="phone" placeholder="(865) 555-1234" autocomplete="tel" maxlength="30" required/></div>
+          </div>
+          <p class="form-note">Please do not include medical, dental, insurance, or other private health information. Our team will discuss your needs by phone.</p>
+          <button type="submit" class="btn btn-white btn-lg btn-submit">Request a Call Back</button>
+        </form>
+      </div>
     </div>
   </section>
 
