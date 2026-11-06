@@ -501,11 +501,12 @@
       <div class="loc-form-wrap" id="request-form">
         <h3>Or Request an Appointment Online</h3>
         <p class="loc-form-sub">Leave your name and number and our Dandridge team will call you back during office hours.</p>
-        <form id="locationRequestForm" action="https://formsubmit.co/dandridge@elitedentalsmiles.com" method="POST" data-elite-form="location_page_request" data-location-select="request-location">
-          <input type="hidden" name="_subject" value="New Appointment Request - Dandridge Page - Elite Dental"/>
-          <input type="hidden" name="_captcha" value="false"/>
-          <input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/thank-you"/>
-          <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off"/>
+        <form id="locationRequestForm" action="/api/appointment-request" method="POST" data-elite-form="location_page_request" data-location-select="request-location">
+          <input type="hidden" name="form_type" value="location_page_request"/>
+          <input type="hidden" name="source_page" value="/dandridge-dentist"/>
+          <input type="hidden" name="form_started" value=""/>
+          <input type="hidden" name="elapsed_ms" value=""/>
+          <input type="text" name="website" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off"/>
           <input type="hidden" id="request-location" name="location" value="Dandridge"/>
           <div class="form-row">
             <div class="form-group"><label for="request-name">Name</label><input type="text" id="request-name" name="name" placeholder="Your full name" autocomplete="name" maxlength="100" required/></div>
@@ -514,6 +515,7 @@
           <p class="form-note">Please do not include medical, dental, insurance, or other private health information. Our team will discuss your needs by phone.</p>
           <button type="submit" class="btn btn-white btn-lg btn-submit">Request a Call Back</button>
         </form>
+        <script>(function(f){if(!f)return;var t=Date.now(),s=f.querySelector('[name="form_started"]'),e=f.querySelector('[name="elapsed_ms"]');s.value=t;f.addEventListener("submit",function(){e.value=Date.now()-t})})(document.getElementById("locationRequestForm"));</script>
       </div>
     </div>
   </section>

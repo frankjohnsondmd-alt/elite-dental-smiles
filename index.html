@@ -579,11 +579,12 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
     <p class="cta-note">Friendly team &middot; Same-week appointments &middot; Financing available</p>
     <div class="contact-form-wrap anim-up" id="contact-form">
       <h3>Or Request an Appointment Online</h3>
-      <form id="contactForm" action="https://formsubmit.co/dandridge@elitedentalsmiles.com" method="POST" data-elite-form="appointment_request" data-location-select="contact-location">
-        <input type="hidden" name="_subject" value="New Appointment Request - Elite Dental"/>
-        <input type="hidden" name="_captcha" value="false"/>
-        <input type="hidden" name="_next" value="https://www.elitedentalsmiles.com/thank-you"/>
-        <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off"/>
+      <form id="contactForm" action="/api/appointment-request" method="POST" data-elite-form="appointment_request" data-location-select="contact-location">
+        <input type="hidden" name="form_type" value="appointment_request"/>
+        <input type="hidden" name="source_page" value="/"/>
+        <input type="hidden" name="form_started" value=""/>
+        <input type="hidden" name="elapsed_ms" value=""/>
+        <input type="text" name="website" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off"/>
         <div class="form-row">
           <div class="form-group"><label for="contact-name">Name</label><input type="text" id="contact-name" name="name" placeholder="Your full name" autocomplete="name" maxlength="100" required/></div>
           <div class="form-group"><label for="contact-phone">Phone</label><input type="tel" id="contact-phone" name="phone" placeholder="(865) 555-1234" autocomplete="tel" maxlength="30" required/></div>
@@ -592,6 +593,7 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
         <p class="form-note">Please do not include medical, dental, insurance, or other private health information. Our team will discuss your needs by phone.</p>
         <button type="submit" class="btn btn-white btn-lg btn-submit">Send Request</button>
       </form>
+      <script>(function(f){if(!f)return;var t=Date.now(),s=f.querySelector('[name="form_started"]'),e=f.querySelector('[name="elapsed_ms"]');s.value=t;f.addEventListener("submit",function(){e.value=Date.now()-t})})(document.getElementById("contactForm"));</script>
     </div>
   </div>
 </section>
@@ -678,9 +680,6 @@ button:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-mid);outlin
       knob.addEventListener("keydown",function(e){var cur=parseFloat(handle.style.left)||50;if(e.key==="ArrowLeft")cur=Math.max(2,cur-2);else if(e.key==="ArrowRight")cur=Math.min(98,cur+2);else return;e.preventDefault();beforeLayer.style.clipPath="inset(0 "+(100-cur)+"% 0 0)";handle.style.left=cur+"%";knob.setAttribute("aria-valuenow",Math.round(cur))})}
   });
 
-  /* Contact form: route to correct office email based on location */
-  var contactForm=document.getElementById("contactForm"),locationSelect=document.getElementById("contact-location");
-  if(contactForm&&locationSelect){locationSelect.addEventListener("change",function(){var emails={"Dandridge":"dandridge@elitedentalsmiles.com","Jefferson City":"jeffersoncity@elitedentalsmiles.com"};contactForm.action="https://formsubmit.co/"+(emails[this.value]||emails["Dandridge"])})}
   // Fix scroll-to-contact: offset for fixed navbar
   document.querySelectorAll('a[href="#contact-form"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var el=document.getElementById("contact-form");if(el){var top=el.getBoundingClientRect().top+window.scrollY-90;window.scrollTo({top:top,behavior:"smooth"})}})});
 })();

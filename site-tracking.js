@@ -122,8 +122,6 @@
         var selectorId = form.getAttribute("data-location-select");
         var selector = selectorId ? document.getElementById(selectorId) : null;
         var office = selector && selector.value ? selector.value : "Unspecified";
-        var nextInput = form.querySelector('input[name="_next"]');
-        if (nextInput) nextInput.value = window.location.origin + "/thank-you";
         storePendingForm(form.getAttribute("data-elite-form"), office);
       });
     });
