@@ -237,7 +237,9 @@ function respond(req, res, status, payload) {
   }
   if (payload.ok) {
     res.statusCode = 303;
-    res.setHeader("Location", "/thank-you");
+    // The office in the query string lets GA4 report form leads by office from the page path.
+    const officeSlug = payload.office ? payload.office.toLowerCase().replace(/\s+/g, "-") : "";
+    res.setHeader("Location", officeSlug ? `/thank-you?office=${officeSlug}` : "/thank-you");
     res.setHeader("Cache-Control", "no-store");
     return res.end();
   }
@@ -326,5 +328,5 @@ module.exports = async function handler(req, res) {
     return respond(req, res, 502, { ok: false, error: `Sorry, we could not send your request just now. ${CALL_US}` });
   }
 
-  return respond(req, res, 200, { ok: true });
+  return respond(req, res, 200, { ok: true, office: request.office });
 };
