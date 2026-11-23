@@ -14,6 +14,7 @@ const FORM_TYPES = {
   appointment_request: "Appointment request",
   location_page_request: "Location page request",
   sedation_consultation: "Sedation consultation",
+  callback_request: "Callback request (cost/estimate)",
 };
 
 const COMFORT_OPTIONS = ["No preference", "Nitrous oxide", "Oral sedation", "Moderate IV sedation"];
